@@ -1,0 +1,53 @@
+Four-Layer Expanding Cone of Influence
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the expanding receptive field cone across all 4 layers for token "mat" (position 7). Layout is a vertical stack of 5 rows (input + 4 layers).
+
+Each row contains 8 token position boxes (positions 0-7), arranged horizontally.
+
+ROW 5 (TOP) - "Layer 4 (Output)":
+- Only position 7 ("mat") is highlighted with pastel purple fill. This is the final output.
+- Label on the left: "Layer 4".
+
+ROW 4 - "Layer 3":
+- Positions 5, 6, 7 highlighted with pastel blue fill (direct window).
+- Others gray.
+- Arrows from position 7 (layer 4) to positions 5, 6, 7 (layer 3).
+- Label: "Layer 3".
+
+ROW 3 - "Layer 2":
+- Positions 3, 4, 5, 6, 7 highlighted with pastel green fill.
+- Others gray.
+- Arrows from positions 5, 6, 7 (layer 3) to their respective windows.
+- Label: "Layer 2".
+
+ROW 2 - "Layer 1":
+- Positions 1, 2, 3, 4, 5, 6, 7 highlighted with pastel yellow fill.
+- Position 0 is gray.
+- Arrows from layer 2 highlighted positions.
+- Label: "Layer 1".
+
+ROW 1 (BOTTOM) - "Input":
+- ALL positions 0-7 highlighted with pastel orange fill. Full coverage achieved!
+- Arrows from layer 1 highlighted positions.
+- Label: "Input".
+
+The overall shape of the highlighted regions forms an INVERTED TRIANGLE / CONE that expands from top to bottom:
+- Layer 4: 1 token (position 7)
+- Layer 3: 3 tokens (5-7)
+- Layer 2: 5 tokens (3-7)
+- Layer 1: 7 tokens (1-7)
+- Input: 8 tokens (0-7) - FULL COVERAGE
+
+RIGHT ANNOTATIONS:
+- "R_1 = 3" next to layer 3
+- "R_2 = 5" next to layer 2
+- "R_3 = 7" next to layer 1
+- "R_4 = 9 (capped at n=8)" next to input
+
+FORMULA BOX (bottom right):
+- "R_L = L x w = 4 x 3 = 12"
+- "Full coverage reached by layer 3"
+
+Style: Clean academic illustration with sans-serif labels, gradient of pastel colors from purple (top) through blue, green, yellow to orange (bottom). This gradient visually reinforces the expanding cone. Light gray for inaccessible positions. Thin arrows connecting layers. White background throughout.

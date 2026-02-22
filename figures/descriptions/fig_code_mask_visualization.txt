@@ -1,0 +1,42 @@
+Visualization of the PyTorch SWA Mask Output
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the attention mask matrix that would be produced by the PyTorch code implementation, connecting the code to the visual result. Layout is two parts: code snippet on the left, resulting matrix on the right.
+
+LEFT SIDE - "Code":
+- A code block with a light gray background (like a code editor), showing the key lines:
+
+  mask = (col <= row) & (row - col < w)
+
+  where w = 3
+
+- Use a monospace font. The code should be clearly readable.
+- Syntax highlighting: keywords in blue, variables in black, numbers in red.
+
+ARROW:
+- A large right-pointing arrow labeled "Produces" connecting code to matrix.
+
+RIGHT SIDE - "Resulting Mask (8x8, w=3)":
+- An 8x8 grid matrix.
+- Row labels on left: 0-7 (query positions).
+- Column labels on top: 0-7 (key positions).
+- Cells within the SWA band: filled with pastel lavender, containing the value "0" (meaning "allowed, no mask change").
+- Cells outside the band: filled with light red/salmon, containing "-inf" (meaning "blocked").
+
+The exact pattern:
+Row 0: [0, -inf, -inf, -inf, -inf, -inf, -inf, -inf]
+Row 1: [0, 0, -inf, -inf, -inf, -inf, -inf, -inf]
+Row 2: [0, 0, 0, -inf, -inf, -inf, -inf, -inf]
+Row 3: [-inf, 0, 0, 0, -inf, -inf, -inf, -inf]
+Row 4: [-inf, -inf, 0, 0, 0, -inf, -inf, -inf]
+Row 5: [-inf, -inf, -inf, 0, 0, 0, -inf, -inf]
+Row 6: [-inf, -inf, -inf, -inf, 0, 0, 0, -inf]
+Row 7: [-inf, -inf, -inf, -inf, -inf, 0, 0, 0]
+
+ANNOTATIONS:
+- Arrow pointing to the lavender band: "Sliding window band: scores unchanged"
+- Arrow pointing to the red region: "Masked: scores set to -infinity"
+- Below: "Two simple conditions create the entire mask: causal (col <= row) AND window (row - col < 3)"
+
+Style: Clean academic illustration with sans-serif labels for the matrix, monospace font for code. Pastel lavender for allowed, light red/salmon for masked. Thin black grid lines. White background throughout. The connection between code and visual output should be clear.

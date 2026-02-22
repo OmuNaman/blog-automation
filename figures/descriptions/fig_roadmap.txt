@@ -1,0 +1,37 @@
+The Landscape of Attention Mechanisms in Transformers
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This is a conceptual roadmap diagram showing how different attention mechanisms relate to each other. The layout is a centered tree/mind-map style, reading from center outward.
+
+CENTER:
+- A large rounded rectangle with a pastel blue fill and thin black border, labeled "Self-Attention" in bold sans-serif font. This is the root concept.
+
+BRANCHING OUT (three main branches, arranged left, right, and bottom):
+
+LEFT BRANCH - "Full Attention":
+- A rounded rectangle with a light gray fill, labeled "Full Attention O(n²)".
+- Below it, a smaller box labeled "Standard Transformer (2017)".
+- Connected to the center with a solid black arrow.
+
+RIGHT BRANCH - "Sparse Attention" (this is the focus area):
+- A rounded rectangle with a pastel green fill and a slightly thicker border (to indicate focus), labeled "Sparse Attention O(n·w)".
+- Below it, four sub-boxes arranged vertically:
+  1. A highlighted box with pastel yellow fill and a bold dashed border, labeled "Sliding Window Attention" with a star or highlight indicator to show this is the article's focus.
+  2. A box with pastel lavender fill, labeled "Dilated Sliding Window".
+  3. A box with pastel pink fill, labeled "Global + Local (Longformer)".
+  4. A box with pastel orange fill, labeled "Local + Random + Global (BigBird)".
+- All four sub-boxes are connected to the "Sparse Attention" parent with thin black arrows.
+
+BOTTOM BRANCH - "Hybrid Approaches":
+- A rounded rectangle with a pastel peach fill, labeled "Hybrid (SWA + Full)".
+- Below it, three small boxes:
+  1. "Gemma 2 (1:1)"
+  2. "Gemma 3 (5:1)"
+  3. "Mistral 7B (all SWA)"
+- Connected to both the "Full Attention" and "Sparse Attention" boxes with dashed gray arrows to show it combines both.
+
+ANNOTATIONS:
+- A small text annotation near "Sliding Window Attention" saying "This article" with an arrow pointing to it.
+
+Style: Clean academic illustration with sans-serif labels (e.g., Arial or Helvetica style), pastel color palette (blue, green, lavender, pink, gray, peach/orange), solid black arrows for main connections, dashed gray arrows for hybrid relationships. White background throughout. All text must be clearly readable.

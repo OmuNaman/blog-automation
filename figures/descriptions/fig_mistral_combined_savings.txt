@@ -1,0 +1,44 @@
+Combined Memory Savings in Mistral 7B: GQA + SWA
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows how Mistral 7B combines two techniques (GQA and SWA) for compound memory savings. Layout is a waterfall/funnel diagram reading left to right.
+
+THREE BARS OR BLOCKS (left to right, decreasing in size):
+
+BLOCK 1 - "Standard MHA + Full Context" (baseline):
+- A tall rectangle with pastel red fill.
+- Height represents 8x relative memory.
+- Label inside or above: "32 KV heads x 8,192 entries"
+- Label below: "Baseline (100%)"
+- Value: "4,096 MB"
+
+ARROW 1 (between blocks 1 and 2):
+- A large downward arrow labeled "GQA: 4x reduction"
+- "32 query heads share 8 KV heads"
+
+BLOCK 2 - "GQA + Full Context":
+- A medium rectangle with pastel orange fill, one-quarter the height of block 1.
+- Label: "8 KV heads x 8,192 entries"
+- Label below: "After GQA (25%)"
+- Value: "1,024 MB"
+
+ARROW 2 (between blocks 2 and 3):
+- A large downward arrow labeled "SWA: 2x reduction"
+- "Rolling buffer caps at w = 4,096"
+
+BLOCK 3 - "GQA + SWA Rolling Buffer" (Mistral 7B):
+- A small rectangle with pastel green fill, half the height of block 2.
+- Label: "8 KV heads x 4,096 entries"
+- Label below: "After GQA + SWA (12.5%)"
+- Value: "512 MB"
+- Bold border or highlight to show this is the final result.
+
+TOTAL SAVINGS ANNOTATION:
+- A bracket spanning from block 1 to block 3 with text: "8x total reduction"
+- Arrow from block 1 height to block 3 height.
+
+BOTTOM TEXT:
+- "Mistral 7B combines Grouped Query Attention (4x) with Sliding Window Attention (2x) for an 8x total KV cache reduction."
+
+Style: Clean academic illustration with sans-serif labels, pastel red/orange/green gradient showing decreasing memory. The size difference between the blocks should be visually dramatic. White background throughout.

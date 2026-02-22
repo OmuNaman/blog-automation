@@ -1,0 +1,42 @@
+Detailed SWA Walkthrough for Token "soft" (Position 6)
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram traces the complete attention computation for a single token ("soft" at position 6) through the sliding window. Layout is top-to-bottom with four stages.
+
+STAGE 1 - "Query and Keys":
+- On the left: a single vector labeled "q_6 (soft)" shown as a tall narrow rectangle with pastel blue fill, shape "(1, 4)".
+- On the right: three key vectors stacked vertically, labeled:
+  - "k_4 (the)" with pastel green fill
+  - "k_5 (warm)" with pastel green fill
+  - "k_6 (soft)" with pastel green fill
+- Each key vector is shape "(1, 4)".
+- A bracket on the right grouping the three keys with text "Window: positions 4, 5, 6".
+- Arrows from q_6 to each key indicating dot product computation.
+- The tokens outside the window (positions 0-3, 7) should be shown as dimmed/grayed out boxes.
+
+STAGE 2 - "Raw Scores (dot products)":
+- Three values shown in rounded boxes:
+  - "q_6 · k_4 = 2.1" (example value)
+  - "q_6 · k_5 = 3.7" (example value)
+  - "q_6 · k_6 = 1.5" (example value)
+- Arrow down labeled "Scale by 1/sqrt(d_k) = 1/sqrt(4) = 0.5"
+- Scaled scores: "1.05", "1.85", "0.75"
+
+STAGE 3 - "Softmax (over 3 scores only)":
+- The three scaled scores go through softmax.
+- Results shown as three colored bars or values:
+  - "0.27" (position 4)
+  - "0.50" (position 5) - tallest bar, pastel green
+  - "0.23" (position 6)
+- Note: "Softmax over 3 values, not 7"
+
+STAGE 4 - "Weighted Sum of Values":
+- Three value vectors: "v_4", "v_5", "v_6" each shape "(1, 4)" with pastel orange fill.
+- Multiplication: "0.27 * v_4 + 0.50 * v_5 + 0.23 * v_6"
+- Equals: "output_6" shown as a single vector, shape "(1, 4)" with pastel purple fill.
+
+BOTTOM:
+- Text: "The output for token 'soft' is a weighted combination of only 3 value vectors."
+
+Style: Clean academic illustration with sans-serif labels, color-coded vectors (blue for query, green for keys, orange for values, purple for output). Solid black arrows for data flow. White background throughout.

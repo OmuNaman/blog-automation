@@ -1,0 +1,38 @@
+Full Causal Attention vs Sliding Window Attention: Side-by-Side Comparison
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows two 8x8 attention matrices side by side for direct comparison. Layout is left-to-right with two matrices.
+
+LEFT MATRIX - "Full Causal Attention":
+- Title above: "Full Causal Attention" in bold.
+- An 8x8 grid.
+- Row labels: "The"(0) through "mat"(7) on the left.
+- Column labels: "The"(0) through "mat"(7) on the top.
+- Lower triangle (including diagonal) filled with pastel blue.
+- Upper triangle is white/empty.
+- Below: "36 active scores".
+
+RIGHT MATRIX - "Sliding Window Attention (w=3)":
+- Title above: "Sliding Window (w = 3)" in bold.
+- An 8x8 grid, same size as the left one.
+- Same row and column labels.
+- ONLY the banded diagonal region is filled with pastel green:
+  - Row 0: cell (0,0) only
+  - Row 1: cells (1,0) and (1,1)
+  - Row 2: cells (2,0), (2,1), (2,2)
+  - Row 3: cells (3,1), (3,2), (3,3) -- NOTE: (3,0) is NOT filled because distance is 3 which equals w
+  - Row 4: cells (4,2), (4,3), (4,4)
+  - Row 5: cells (5,3), (5,4), (5,5)
+  - Row 6: cells (6,4), (6,5), (6,6)
+  - Row 7: cells (7,5), (7,6), (7,7)
+- Everything outside the band is white/empty.
+- Below: "21 active scores".
+
+BETWEEN THE MATRICES:
+- A large right-pointing arrow with text "42% fewer scores" or a "vs" label.
+
+BOTTOM:
+- Text: "The banded diagonal pattern is the signature of sliding window attention."
+
+Style: Clean academic illustration with sans-serif labels. Pastel blue for full attention cells, pastel green for SWA cells. Thin black grid lines. White background throughout. Both matrices should be the same size for easy visual comparison.

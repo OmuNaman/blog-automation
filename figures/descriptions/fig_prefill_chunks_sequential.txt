@@ -1,0 +1,36 @@
+Chunked Pre-fill in Action: Processing an 8-Token Prompt
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the chunked pre-fill process step by step for our 8-token sequence with w=3. Layout is top-to-bottom with three processing stages.
+
+TOP - "The Full Prompt":
+- A horizontal row of 8 token boxes: "The", "cat", "sat", "on", "the", "warm", "soft", "mat".
+- Dashed vertical lines divide the sequence into 3 chunks:
+  - Chunk 1: tokens 0-2 ("The", "cat", "sat") with a light blue bracket
+  - Chunk 2: tokens 3-5 ("on", "the", "warm") with a light green bracket
+  - Chunk 3: tokens 6-7 ("soft", "mat") with a light orange bracket
+
+STAGE 1 - "Process Chunk 1":
+- Show tokens "The", "cat", "sat" highlighted in pastel blue.
+- A small 3x3 attention matrix next to them (lower triangle filled, blue).
+- An arrow to a small buffer showing: [K_0/V_0, K_1/V_1, K_2/V_2] in pastel blue.
+- Label: "Compute attention within chunk, fill KV cache slots 0-2"
+
+STAGE 2 - "Process Chunk 2":
+- Show tokens "on", "the", "warm" highlighted in pastel green.
+- A small 3x3 attention matrix (green).
+- The buffer now shows: [K_3/V_3, K_4/V_4, K_5/V_5] in pastel green (overwritten because rolling buffer with w=3).
+- Arrow showing the cache update.
+- Label: "Process next chunk, update rolling buffer"
+
+STAGE 3 - "Process Chunk 3":
+- Show tokens "soft", "mat" highlighted in pastel orange.
+- A small 2x2 attention matrix (orange).
+- The buffer shows: [K_6/V_6, K_7/V_7, K_5/V_5] (partially overwritten).
+- Label: "Final chunk, cache ready for generation"
+
+BOTTOM:
+- "Pre-fill complete. Rolling buffer contains the most recent w entries. Ready for autoregressive generation."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue/green/orange for the three chunks (matching their bracket colors). Small attention matrices shown next to each chunk. Arrows showing data flow into the rolling buffer. White background throughout.

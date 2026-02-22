@@ -1,0 +1,36 @@
+Full Q times K-Transpose Matrix Multiplication for Standard Attention
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the matrix multiplication Q * K^T that produces the raw attention scores for standard (full) attention. Layout is left-to-right showing the multiplication.
+
+LEFT - Query Matrix Q:
+- A tall rectangular matrix with shape label "(8, 4)" shown above or below.
+- Pastel blue fill.
+- Row labels on the left: "q_The", "q_cat", "q_sat", "q_on", "q_the", "q_warm", "q_soft", "q_mat" (8 rows).
+- Column label: "d_k = 4" (4 columns).
+- Internal cells can show dots or small numbers to suggest values.
+
+MULTIPLICATION SYMBOL:
+- A large "x" or "·" between Q and K^T.
+
+MIDDLE - Key Matrix Transposed K^T:
+- A wide rectangular matrix with shape label "(4, 8)" shown above or below.
+- Pastel green fill.
+- Row label: "d_k = 4" (4 rows).
+- Column labels: "k_The", "k_cat", "k_sat", "k_on", "k_the", "k_warm", "k_soft", "k_mat" (8 columns).
+
+EQUALS SIGN:
+- A large "=" symbol.
+
+RIGHT - Scores Matrix (Q * K^T):
+- A square 8x8 matrix with shape label "(8, 8)" shown above.
+- All 64 cells filled with pastel yellow/orange to indicate all scores are computed.
+- Row labels: "The" through "mat".
+- Column labels: "The" through "mat".
+- Bold text inside or below: "64 scores computed".
+
+ANNOTATION:
+- Below the entire diagram: "Every query vector is multiplied with every key vector, producing 64 raw attention scores."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for Q, pastel green for K^T, pastel yellow for the result matrix. Thin black borders. White background throughout. Matrix shape labels like "(8, 4)" must be clearly visible.

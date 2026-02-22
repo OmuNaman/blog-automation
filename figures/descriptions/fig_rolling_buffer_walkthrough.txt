@@ -1,0 +1,57 @@
+Step-by-Step Rolling Buffer Walkthrough: 8 Generation Steps
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the rolling buffer state at each of 8 generation steps with w=3. Layout is a vertical sequence of 8 rows, one per step.
+
+Each row shows:
+- Step number on the left
+- A 3-cell horizontal buffer (the fixed-size cache)
+- The token being written (highlighted)
+- Which slot is being written to
+
+STEP 0:
+- Buffer: ["The" (blue fill), empty (gray), empty (gray)]
+- Arrow pointing to slot 0. Label: "Write slot: 0 % 3 = 0"
+- New token: "The" highlighted.
+
+STEP 1:
+- Buffer: ["The" (blue), "cat" (green fill), empty (gray)]
+- Arrow to slot 1. Label: "Write slot: 1 % 3 = 1"
+
+STEP 2:
+- Buffer: ["The" (blue), "cat" (green), "sat" (orange fill)]
+- Arrow to slot 2. Label: "Write slot: 2 % 3 = 2"
+- Annotation: "Buffer full!"
+
+STEP 3:
+- Buffer: ["on" (blue, bold border to show overwrite), "cat" (green), "sat" (orange)]
+- Arrow to slot 0. Label: "Write slot: 3 % 3 = 0"
+- Red strikethrough on old value "The" being replaced by "on".
+- Annotation: "Overwrites 'The'"
+
+STEP 4:
+- Buffer: ["on" (blue), "the" (green, bold), "sat" (orange)]
+- Arrow to slot 1. Label: "Write slot: 4 % 3 = 1"
+- Red strikethrough: "cat" replaced by "the".
+
+STEP 5:
+- Buffer: ["on" (blue), "the" (green), "warm" (orange, bold)]
+- Arrow to slot 2. Label: "Write slot: 5 % 3 = 2"
+- Red strikethrough: "sat" replaced by "warm".
+
+STEP 6:
+- Buffer: ["soft" (blue, bold), "the" (green), "warm" (orange)]
+- Arrow to slot 0. Label: "Write slot: 6 % 3 = 0"
+- Red strikethrough: "on" replaced by "soft".
+
+STEP 7:
+- Buffer: ["soft" (blue), "mat" (green, bold), "warm" (orange)]
+- Arrow to slot 1. Label: "Write slot: 7 % 3 = 1"
+- Red strikethrough: "the" replaced by "mat".
+
+BOTTOM ANNOTATION:
+- "After 8 steps, the buffer still has exactly 3 entries: the 3 most recent tokens."
+- "Memory usage: constant O(w), never grows."
+
+Style: Clean academic illustration with sans-serif labels, consistent pastel colors for the 3 slots (blue, green, orange). Bold borders or highlights for newly written entries. Red strikethrough text for overwritten values. White background throughout. The progression should read clearly from top to bottom.

@@ -1,0 +1,48 @@
+BigBird's Three Attention Components: Local + Global + Random
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows BigBird's three-component attention pattern. Layout is four 8x8 matrices: three individual components and one combined result.
+
+TOP ROW - Three Components Side by Side:
+
+COMPONENT 1 - "Local Window":
+- An 8x8 grid with the banded diagonal (w=3) filled in pastel blue.
+- Title: "Local Window"
+- Subtitle: "Nearby tokens"
+
+COMPONENT 2 - "Global Tokens":
+- An 8x8 grid where:
+  - Row 0 and Row 7 are fully filled (pastel pink).
+  - Column 0 and Column 7 are fully filled (pastel pink).
+  - (First and last tokens are global.)
+- Title: "Global Tokens"
+- Subtitle: "Information hubs"
+
+COMPONENT 3 - "Random Connections":
+- An 8x8 grid with random scattered cells filled in pastel orange.
+- About 2-3 random cells per row, avoiding the diagonal band and global positions.
+- Title: "Random"
+- Subtitle: "Shortcut paths"
+
+PLUS SIGNS between components: "+" symbols.
+
+BOTTOM ROW - Combined Result:
+
+COMBINED MATRIX:
+- A larger 8x8 grid combining all three patterns.
+- Blue cells for local window.
+- Pink cells for global tokens.
+- Orange cells for random connections.
+- Where patterns overlap, use the dominant color (global > local > random).
+- Title: "Combined: BigBird Attention Pattern"
+
+ANNOTATIONS below the combined matrix:
+- "Local: captures nearby context (O(n x w))"
+- "Global: enables long-range communication (O(n x g))"
+- "Random: creates O(log n) shortcut paths (O(n x r))"
+
+BOTTOM TEXT:
+- "Together, these three components make BigBird a universal approximator of full attention while maintaining linear complexity."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for local, pastel pink for global, pastel orange for random. Consistent cell sizes across all four matrices. White background throughout.

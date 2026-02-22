@@ -1,0 +1,48 @@
+Longformer's Dilated Sliding Window Attention
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram compares standard sliding window with dilated sliding window side by side. Layout is two attention matrices, left and right.
+
+LEFT MATRIX - "Standard Sliding Window (w=3)":
+- An 8x8 grid.
+- Row and column labels: positions 0-7.
+- The standard SWA banded pattern filled in pastel green:
+  Row 0: [1]
+  Row 1: [1,1]
+  Row 2: [1,1,1]
+  Row 3: [_,1,1,1]
+  Row 4: [_,_,1,1,1]
+  Row 5: [_,_,_,1,1,1]
+  Row 6: [_,_,_,_,1,1,1]
+  Row 7: [_,_,_,_,_,1,1,1]
+- Title: "Standard SWA (w=3)"
+- Below: "Receptive field per layer: w = 3"
+
+ARROW between matrices:
+- "Add dilation d = 2"
+
+RIGHT MATRIX - "Dilated Sliding Window (w=3, d=2)":
+- An 8x8 grid.
+- Row and column labels: positions 0-7.
+- The dilated pattern filled in pastel yellow. For each row, instead of attending to consecutive positions, skip every other one:
+  Row 0: position 0 only [1]
+  Row 1: positions 1 only [_,1]
+  Row 2: positions 0, 2 [1,_,1]
+  Row 3: positions 1, 3 [_,1,_,1]
+  Row 4: positions 0, 2, 4 [1,_,1,_,1]
+  Row 5: positions 1, 3, 5 [_,1,_,1,_,1]
+  Row 6: positions 2, 4, 6 [_,_,1,_,1,_,1]
+  Row 7: positions 3, 5, 7 [_,_,_,1,_,1,_,1]
+- Title: "Dilated SWA (w=3, d=2)"
+- Below: "Receptive field per layer: d x w = 6"
+
+ANNOTATIONS:
+- On the standard matrix: a bracket showing "3 consecutive neighbors"
+- On the dilated matrix: a bracket showing "3 neighbors, spread across 6 positions"
+
+BOTTOM TEXT:
+- "Dilation expands the receptive field without increasing the number of attention scores."
+- "Same number of attended positions (3), but covering a wider range."
+
+Style: Clean academic illustration with sans-serif labels, pastel green for standard SWA, pastel yellow for dilated SWA. Thin black grid lines. White background throughout.

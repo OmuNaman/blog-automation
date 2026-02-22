@@ -1,0 +1,41 @@
+Hybrid Architecture: Alternating SWA and Full Attention Layers (Gemma 3)
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows a vertical stack of transformer layers alternating between sliding window attention and full attention, as used in Gemma 3. Layout is a vertical tower of blocks reading bottom to top.
+
+THE LAYER STACK (bottom to top):
+- Show 12 layers stacked vertically, numbered 1 through 12.
+- Each layer is a wide horizontal rounded rectangle.
+
+Layer coloring follows the 5:1 ratio:
+- Layers 1-5: pastel blue fill, labeled "SWA (w=1024)" inside each.
+- Layer 6: pastel green fill, labeled "Full Attention" inside. This layer has a slightly thicker border and a star or highlight.
+- Layers 7-11: pastel blue fill, labeled "SWA (w=1024)".
+- Layer 12: pastel green fill, labeled "Full Attention".
+
+ARROWS:
+- Thin black arrows connecting each layer to the next (upward data flow).
+
+LEFT SIDE ANNOTATIONS:
+- A bracket spanning layers 1-5 with label "5 SWA layers"
+- A bracket on layer 6 with label "1 Full layer"
+- A bracket spanning layers 7-11 with label "5 SWA layers"
+- A bracket on layer 12 with label "1 Full layer"
+- Overall bracket: "5:1 ratio"
+
+RIGHT SIDE ANNOTATIONS:
+- Next to the SWA layers: "Local attention only, KV cache = w entries"
+- Next to the Full attention layers: "Global checkpoint: attends to all positions"
+
+BOTTOM:
+- Input arrow entering layer 1: "Input tokens"
+
+TOP:
+- Output arrow leaving layer 12: "Output"
+
+KEY INSIGHT BOX:
+- "Full attention layers act as periodic global checkpoints."
+- "5:1 ratio reduces KV cache by ~5x with <0.3% perplexity loss."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for SWA layers, pastel green for full attention layers. The contrast between the two colors should be clear. Arrows for data flow. White background throughout.

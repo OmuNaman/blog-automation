@@ -1,0 +1,41 @@
+KV Cache Memory Savings at Different Sequence Lengths
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows a visual table/infographic of memory savings at different sequence lengths with w=4096. Layout is a series of horizontal comparison bars.
+
+TITLE:
+- "KV Cache Memory Savings (w = 4,096)" in bold.
+
+FOUR COMPARISON ROWS (one per sequence length):
+
+ROW 1 - "n = 8K":
+- Full bar: pastel blue, extends to full width, labeled "8,192 entries (Full)"
+- SWA bar (below): pastel green, extends to half width, labeled "4,096 entries (SWA)"
+- Savings badge: a circle or pill shape with "50% saved" in bold.
+
+ROW 2 - "n = 16K":
+- Full bar: pastel blue, full width, "16,384 entries (Full)"
+- SWA bar: pastel green, quarter width, "4,096 entries (SWA)"
+- Savings badge: "75% saved"
+
+ROW 3 - "n = 32K":
+- Full bar: pastel blue, full width, "32,768 entries (Full)"
+- SWA bar: pastel green, one-eighth width, "4,096 entries (SWA)"
+- Savings badge: "87.5% saved"
+
+ROW 4 - "n = 64K":
+- Full bar: pastel blue, full width, "65,536 entries (Full)"
+- SWA bar: pastel green, tiny width, "4,096 entries (SWA)"
+- Savings badge: "93.75% saved"
+
+The visual contrast between the full and SWA bars should be increasingly dramatic from top to bottom, making the savings visually obvious.
+
+FORMULA BOX (bottom):
+- "Savings = 1 - w/n"
+- "As n grows, the SWA buffer becomes a tiny fraction of the full cache."
+
+CONCRETE NUMBERS (right side):
+- For Mistral 7B (fp16): "Full at 32K = 4,096 MB | SWA = 512 MB (fixed)"
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for full attention bars, pastel green for SWA bars. Savings percentages in bold. The increasing contrast between bar lengths should tell the story visually. White background throughout.

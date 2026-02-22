@@ -1,0 +1,26 @@
+Single Layer View: Token "mat" Can Only See 3 Neighbors
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the limited view of a single SWA layer for token "mat" (position 7). Layout is a horizontal token sequence with attention connections.
+
+TOP ROW - "Layer 1 Output":
+- A single highlighted token box at position 7, labeled "mat", with pastel purple fill and bold border. This is the focus token.
+
+BOTTOM ROW - "Layer 0 Output / Input":
+- A horizontal row of 8 token boxes:
+  - Positions 0-4: "The", "cat", "sat", "on", "the" with very light gray fill and dashed borders (these are OUTSIDE the window, inaccessible).
+  - Positions 5-7: "warm", "soft", "mat" with pastel green fill and solid borders (these are INSIDE the window).
+
+CONNECTIONS:
+- Three solid black arrows from "mat" at the top down to "warm" (5), "soft" (6), "mat" (7) at the bottom.
+- No arrows to positions 0-4. Instead, red "X" marks or dashed red lines indicating "blocked".
+
+WINDOW BRACKET:
+- A bracket below positions 5, 6, 7 labeled "Window (w = 3)".
+
+ANNOTATION:
+- Text to the right: "Token 'mat' has NO direct access to positions 0-4."
+- Below: "Receptive field at layer 1: R_1 = w = 3 tokens"
+
+Style: Clean academic illustration with sans-serif labels, pastel green for accessible tokens, light gray for inaccessible tokens, pastel purple for the query token. Solid black arrows for attention connections, red dashed lines or X marks for blocked connections. White background throughout.

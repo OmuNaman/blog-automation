@@ -1,0 +1,37 @@
+Softmax Normalization: Full Attention vs Sliding Window Attention
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram compares how softmax distributes attention weights in full attention vs SWA for token "soft" (position 6). Layout is top-to-bottom with two horizontal bar charts.
+
+TOP BAR CHART - "Full Attention (token 'soft', position 6)":
+- Title: "Full Attention: 7 positions to distribute weight across"
+- 7 horizontal bars (positions 0 through 6), each labeled with the token name.
+- Bar lengths represent example attention weights:
+  - "The" (0): 0.03 - very short bar, pastel blue
+  - "cat" (1): 0.04 - very short bar, pastel blue
+  - "sat" (2): 0.05 - short bar, pastel blue
+  - "on" (3): 0.08 - short bar, pastel blue
+  - "the" (4): 0.15 - medium bar, pastel blue
+  - "warm" (5): 0.35 - long bar, pastel blue
+  - "soft" (6): 0.30 - long bar, pastel blue
+- Sum annotation: "Sum = 1.00"
+- Key insight text: "Attention is spread thin across 7 positions"
+
+BOTTOM BAR CHART - "Sliding Window Attention (w=3)":
+- Title: "SWA (w=3): Only 3 positions to distribute weight across"
+- 7 positions shown but only 3 have bars:
+  - "The" (0): no bar, grayed out with "0.00"
+  - "cat" (1): no bar, grayed out with "0.00"
+  - "sat" (2): no bar, grayed out with "0.00"
+  - "on" (3): no bar, grayed out with "0.00"
+  - "the" (4): 0.27 - medium bar, pastel green
+  - "warm" (5): 0.50 - long bar, pastel green
+  - "soft" (6): 0.23 - medium bar, pastel green
+- Sum annotation: "Sum = 1.00"
+- Key insight text: "Attention is concentrated on the 3 most relevant neighbors"
+
+ANNOTATION between the two charts:
+- Text: "SWA forces sharper attention within the local window"
+
+Style: Clean academic illustration with sans-serif labels, horizontal bar charts, pastel blue for full attention bars, pastel green for SWA bars, light gray for zero-weight positions. White background throughout.

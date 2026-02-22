@@ -1,0 +1,49 @@
+Taxonomy of Sparse Attention Patterns
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows five different attention patterns side by side as small 8x8 attention matrices. Layout is left-to-right, five matrices in a row.
+
+MATRIX 1 - "Full Attention":
+- An 8x8 grid with the entire lower triangle filled in pastel blue.
+- Title above: "Full Attention"
+- Subtitle: "O(n^2)"
+- Caption below: "Every token attends to all previous"
+
+MATRIX 2 - "Sliding Window":
+- An 8x8 grid with only the banded diagonal (w=3) filled in pastel green.
+- Title: "Sliding Window"
+- Subtitle: "O(n x w)"
+- Caption: "Local neighbors only"
+
+MATRIX 3 - "Dilated Sliding Window":
+- An 8x8 grid with a banded pattern but with gaps (every other cell within the band is filled).
+- Filled cells in pastel yellow.
+- For example, row 6 might attend to positions 2, 4, 6 instead of 4, 5, 6.
+- Title: "Dilated Window"
+- Subtitle: "O(n x w)"
+- Caption: "Wider reach, same cost"
+
+MATRIX 4 - "Sliding + Global":
+- An 8x8 grid combining:
+  - The banded diagonal (pastel green) for local attention
+  - Full row 0 AND full column 0 filled in pastel pink (the global token at position 0)
+- Title: "Sliding + Global"
+- Subtitle: "O(n x w + n x g)"
+- Caption: "Local + hub tokens (Longformer)"
+
+MATRIX 5 - "Local + Random + Global":
+- An 8x8 grid combining:
+  - The banded diagonal (pastel green) for local attention
+  - Full row 0 AND column 0 (pastel pink) for global
+  - Random scattered filled cells (pastel orange) outside the band for random attention
+- Title: "BigBird"
+- Subtitle: "O(n x (w + r + g))"
+- Caption: "Local + global + random"
+
+ALL MATRICES should be the same size and aligned horizontally for easy comparison.
+
+BOTTOM ANNOTATION:
+- An arrow from left to right labeled "Increasing sparsity, decreasing compute"
+
+Style: Clean academic illustration with sans-serif labels, consistent matrix sizes. Pastel blue for full, green for local, yellow for dilated, pink for global, orange for random. Thin black grid lines. White background throughout. All titles and captions clearly readable.

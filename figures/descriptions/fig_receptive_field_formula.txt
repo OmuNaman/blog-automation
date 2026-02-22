@@ -1,0 +1,32 @@
+Receptive Field Growth for Mistral 7B
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows a simple chart or visual table illustrating how the receptive field grows with layers for Mistral 7B (32 layers, w=4096). Layout is a horizontal bar chart or stepped diagram.
+
+TOP TITLE:
+- "Receptive Field Growth: R_L = L x w" in bold.
+- Subtitle: "Mistral 7B: L = 32 layers, w = 4,096"
+
+THE CHART:
+A horizontal bar chart with selected layers on the y-axis and receptive field size on the x-axis:
+
+- Layer 1: bar extends to 4,096 tokens, pastel blue, labeled "4,096"
+- Layer 2: bar extends to 8,192 tokens, slightly darker blue, labeled "8,192"
+- Layer 4: bar extends to 16,384 tokens, pastel green, labeled "16,384"
+- Layer 8: bar extends to 32,768 tokens, pastel yellow, labeled "32,768"
+- Layer 16: bar extends to 65,536 tokens, pastel orange, labeled "65,536"
+- Layer 32: bar extends to 131,072 tokens, pastel red, labeled "131,072"
+
+REFERENCE LINES:
+- A vertical dashed line at 8,192 labeled "Context window (8,192 tokens)" in gray.
+- The bar at Layer 2 exactly meets this line. An annotation: "Full context coverage by layer 2!"
+
+BOTTOM ANNOTATION:
+- "The theoretical receptive field far exceeds the context window."
+- "Each additional layer adds w = 4,096 tokens to the receptive field."
+
+KEY INSIGHT BOX:
+- A small callout box: "Even though each layer only sees 4,096 neighbors, layer 32 can theoretically access information from 131K tokens away."
+
+Style: Clean academic illustration with sans-serif labels, gradient of pastel colors from blue to red as the bars get longer. The dashed reference line at 8,192 should be prominent. White background throughout. Numbers must be clearly readable.

@@ -1,0 +1,25 @@
+Full Causal Attention Matrix for an 8-Token Sequence
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows a single 8x8 attention matrix for the causal (autoregressive) attention pattern. It is a detailed, labeled grid.
+
+THE MATRIX:
+- An 8x8 grid of square cells.
+- ROW labels on the left side (these are the QUERY tokens): "The" (0), "cat" (1), "sat" (2), "on" (3), "the" (4), "warm" (5), "soft" (6), "mat" (7). Show both the word and the index number.
+- COLUMN labels on the top (these are the KEY tokens): "The" (0), "cat" (1), "sat" (2), "on" (3), "the" (4), "warm" (5), "soft" (6), "mat" (7).
+- Label the rows axis as "Queries" and the columns axis as "Keys".
+
+CELL COLORING:
+- Lower triangle (including diagonal): filled with pastel blue. These are the ACTIVE attention scores. Specifically, cell (i, j) is blue if j <= i.
+- Upper triangle: white or very light gray with a small "X" or diagonal line to indicate "masked".
+
+COUNT ANNOTATION:
+- A text annotation to the right of the matrix: "36 active scores" with a small arrow pointing to the blue region.
+- Below the matrix: "Each token attends to itself and all previous tokens."
+
+SPECIFIC CELLS TO HIGHLIGHT:
+- Row 0 ("The"): only cell (0,0) is blue (attends to itself only).
+- Row 7 ("mat"): all 8 cells (0 through 7) are blue (attends to everything).
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for active cells, light gray or white for masked cells, thin black grid lines, black text labels. White background throughout.

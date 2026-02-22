@@ -1,0 +1,48 @@
+Compute Scaling: Full Attention O(n^2) vs SWA O(n*w)
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows a line chart comparing the compute cost of full attention vs SWA as sequence length increases. Layout is a standard x-y chart.
+
+CHART AXES:
+- X-axis: "Sequence Length (n)" with values: 1K, 2K, 4K, 8K, 16K, 32K, 64K.
+- Y-axis: "Attention Score Computations" with values scaled appropriately (use millions or billions).
+
+TWO CURVES:
+
+CURVE 1 - "Full Attention O(n^2)" (pastel red/pink, solid line):
+- Grows quadratically. Points roughly:
+  - 1K: 1M
+  - 2K: 4M
+  - 4K: 16M
+  - 8K: 64M
+  - 16K: 256M
+  - 32K: 1,024M (~1B)
+  - 64K: 4,096M (~4B)
+- The curve bends sharply upward.
+- Label at the end: "Full: O(n^2)"
+
+CURVE 2 - "SWA O(n*w), w=4096" (pastel green, solid line):
+- Grows linearly. Points roughly:
+  - 1K: 1M (same as full when n < w)
+  - 2K: 4M (same)
+  - 4K: 16M (same, n = w)
+  - 8K: 32M
+  - 16K: 64M
+  - 32K: 128M
+  - 64K: 256M
+- The line grows steadily, much flatter than the quadratic curve.
+- Label: "SWA: O(n * w)"
+
+KEY POINTS ANNOTATED:
+- At n=4K (where n = w): "n = w: both equal" with a dot.
+- At n=32K: vertical dashed line, "32K: 8x savings" with double-headed arrow between curves.
+- At n=64K: "64K: 16x savings"
+
+SHADED REGION:
+- Light pink/red shading between the two curves for n > w, labeled "Compute saved by SWA".
+
+TITLE:
+- "Compute Scaling: Quadratic vs Linear"
+
+Style: Clean academic chart with sans-serif labels, pastel red for quadratic curve, pastel green for linear curve. Thin gray grid lines. Clean axes with tick marks. White background throughout.

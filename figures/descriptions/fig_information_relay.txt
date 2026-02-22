@@ -1,0 +1,33 @@
+The Information Relay: How Token "The" Reaches Token "mat"
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram traces a specific information path from the first token "The" (position 0) to the last token "mat" (position 7) across multiple SWA layers. Layout is a grid with layers as rows and positions as columns.
+
+THE GRID:
+- 5 rows (Input, Layer 1, Layer 2, Layer 3, Layer 4) from bottom to top.
+- 8 columns (positions 0-7).
+- Each cell is a small circle or rounded square.
+- Token labels at the bottom: "The"(0), "cat"(1), "sat"(2), "on"(3), "the"(4), "warm"(5), "soft"(6), "mat"(7).
+- Layer labels on the left: "Input", "Layer 1", "Layer 2", "Layer 3", "Layer 4".
+
+THE RELAY PATH (highlighted):
+- A bold colored path traces through the grid from position 0 at the Input to position 7 at Layer 4:
+  1. Start: position 0, Input layer - circle filled with pastel red, labeled "The"
+  2. position 0 -> position 2 at Layer 1 (token "sat" attends to "The" within its window). Arrow from (0, Input) to (2, Layer 1). Circle at (2, Layer 1) filled pastel orange.
+  3. position 2 -> position 4 at Layer 2 (token "the" attends to "sat"). Arrow from (2, L1) to (4, L2). Circle at (4, L2) filled pastel yellow.
+  4. position 4 -> position 6 at Layer 3 (token "soft" attends to "the"). Arrow from (4, L2) to (6, L3). Circle at (6, L3) filled pastel green.
+  5. position 6 -> position 7 at Layer 4 (token "mat" attends to "soft"). Arrow from (6, L3) to (7, L4). Circle at (7, L4) filled pastel purple.
+
+The relay path arrows should be THICK and colored (e.g., red or orange) to stand out.
+
+All other circles in the grid should be small, light gray, and unfilled.
+
+RIGHT SIDE ANNOTATION:
+- "Information from 'The' reaches 'mat' after 4 relay hops"
+- "Each hop covers at most w-1 = 2 positions"
+
+BOTTOM ANNOTATION:
+- "Like a game of telephone: information passes through intermediate tokens at each layer."
+
+Style: Clean academic illustration with sans-serif labels. The relay path should be the visual focus with bold colored arrows and filled circles. Non-path cells are small and gray. White background throughout.

@@ -1,0 +1,54 @@
+Evolution of Hybrid Attention Strategies Across Model Generations
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the evolution of attention strategies across four models on a timeline. Layout is left-to-right timeline with four columns.
+
+TIMELINE ARROW:
+- A horizontal arrow at the top, pointing right, labeled "Time" with years marked: 2023, 2024, 2025.
+
+FOUR COLUMNS (one per model):
+
+COLUMN 1 - "Mistral 7B (2023)":
+- A vertical stack of 6 small layer blocks, ALL colored pastel blue.
+- Label below: "All SWA"
+- "w = 4,096"
+- "Ratio: 6:0 (no full attention)"
+- Small text: "Pure SWA"
+
+COLUMN 2 - "Gemma 2 (2024)":
+- A vertical stack of 6 small layer blocks, ALTERNATING pastel blue and pastel green:
+  - Layer 1: blue (SWA)
+  - Layer 2: green (Full)
+  - Layer 3: blue (SWA)
+  - Layer 4: green (Full)
+  - Layer 5: blue (SWA)
+  - Layer 6: green (Full)
+- Label: "Alternating"
+- "w = 4,096"
+- "Ratio: 1:1"
+
+COLUMN 3 - "Gemma 3 (2025)":
+- A vertical stack of 6 small layer blocks:
+  - Layers 1-5: blue (SWA)
+  - Layer 6: green (Full)
+- Label: "Aggressive hybrid"
+- "w = 1,024"
+- "Ratio: 5:1"
+- Annotation: "<0.3% perplexity loss"
+
+COLUMN 4 - "Mistral Small 3.1 (2025)":
+- A vertical stack of 6 small layer blocks, ALL colored pastel green.
+- Label: "All Full Attention"
+- "No SWA"
+- "Ratio: 0:6"
+- Small text: "Back to full (FlashAttention)"
+
+BOTTOM ARROW / TREND:
+- An arrow or text below: "The landscape is still evolving: no single approach dominates."
+
+LEGEND:
+- Blue box = SWA layer
+- Green box = Full attention layer
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for SWA, pastel green for full attention. Timeline arrow at top. Each column clearly separated. White background throughout.

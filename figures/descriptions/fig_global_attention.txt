@@ -1,0 +1,40 @@
+Longformer's Global Attention Mechanism
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows how global attention tokens work alongside sliding window attention. Layout is a combination of a token sequence and an attention matrix.
+
+TOP SECTION - "Token Sequence with Global Token":
+- A horizontal row of 8 token boxes.
+- Token 0 ("[CLS]") has a special appearance: pastel pink fill, bold border, star icon.
+- Tokens 1-7 ("cat", "sat", "on", "the", "warm", "soft", "mat") have standard pastel gray fill.
+- A label above token 0: "Global token"
+
+BOTTOM SECTION - "Attention Matrix":
+- An 8x8 attention matrix combining sliding window and global attention.
+- The banded diagonal (SWA, w=3) is filled with pastel green.
+- ADDITIONALLY:
+  - The ENTIRE row 0 is filled with pastel pink (global token attends to ALL positions).
+  - The ENTIRE column 0 is filled with pastel pink (ALL positions attend to the global token).
+- Where the pink row/column overlaps with the green band, use a blended color (e.g., darker green or teal).
+
+The combined pattern:
+Row 0: [P, P, P, P, P, P, P, P]  (all pink - global attends to all)
+Row 1: [P, G, 0, 0, 0, 0, 0, 0]  (pink for global column, green for window)
+Row 2: [P, G, G, 0, 0, 0, 0, 0]
+Row 3: [P, 0, G, G, 0, 0, 0, 0]
+Row 4: [P, 0, 0, G, G, 0, 0, 0]
+Row 5: [P, 0, 0, 0, G, G, 0, 0]
+Row 6: [P, 0, 0, 0, 0, G, G, 0]
+Row 7: [P, 0, 0, 0, 0, 0, G, G]
+(P = pink/global, G = green/window, 0 = empty)
+
+ANNOTATIONS:
+- Arrow pointing to row 0: "Global token attends to all positions"
+- Arrow pointing to column 0: "All positions attend to global token"
+- Arrow pointing to green band: "Local sliding window attention"
+
+BOTTOM TEXT:
+- "Global tokens act as information hubs. They connect distant parts of the sequence that the sliding window alone cannot reach."
+
+Style: Clean academic illustration with sans-serif labels, pastel pink for global attention cells, pastel green for local window cells. Thin black grid lines. White background throughout.

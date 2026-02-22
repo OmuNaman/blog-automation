@@ -1,0 +1,40 @@
+KV Cache Memory: Full Attention vs SWA Rolling Buffer
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram compares KV cache memory usage between full attention (growing) and SWA rolling buffer (fixed) using a line chart. Layout is a standard x-y chart.
+
+CHART AXES:
+- X-axis: "Sequence Length (tokens)" with values 0, 4K, 8K, 16K, 32K, 64K.
+- Y-axis: "KV Cache Size (entries per layer)" with values 0 to 64K.
+
+TWO LINES:
+
+Line 1 - "Full Attention Cache" (pastel blue, solid line):
+- Starts at 0 and grows linearly.
+- Points: (4K, 4K), (8K, 8K), (16K, 16K), (32K, 32K), (64K, 64K).
+- The line goes diagonally from bottom-left to top-right.
+- Label at end: "Full Attention: O(n)"
+
+Line 2 - "SWA Rolling Buffer (w=4096)" (pastel green, solid line):
+- Starts at 0, grows to 4,096, then stays flat.
+- Points: (4K, 4K), (8K, 4K), (16K, 4K), (32K, 4K), (64K, 4K).
+- The line rises initially then becomes perfectly horizontal at y=4096.
+- Label at end: "SWA Buffer: O(w) = fixed at 4,096"
+
+SHADED REGION:
+- The area between the two lines (for x > 4K) should be lightly shaded in pastel pink/red to indicate "Memory saved by SWA".
+
+ANNOTATIONS AT KEY POINTS:
+- At x=8K: vertical dashed line, annotation "50% savings"
+- At x=16K: annotation "75% savings"
+- At x=32K: annotation "87.5% savings"
+- At x=64K: annotation "93.75% savings"
+
+TITLE:
+- "KV Cache Memory: Full Attention vs Rolling Buffer"
+
+BOTTOM TEXT:
+- "The longer the sequence, the greater the memory savings from SWA."
+
+Style: Clean academic chart with sans-serif labels, pastel blue for full attention line, pastel green for SWA line, light pink shading for the savings region. Thin gray grid lines. White background throughout. All numbers clearly readable.

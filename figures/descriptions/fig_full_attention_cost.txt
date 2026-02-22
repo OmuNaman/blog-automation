@@ -1,0 +1,30 @@
+The Quadratic Cost of Full Self-Attention
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the quadratic scaling problem of full self-attention using three side-by-side examples of increasing sequence length. Layout is left-to-right with three columns.
+
+COLUMN 1 - Small Sequence (n=4):
+- A 4x4 grid (matrix) with the lower triangle filled in pastel blue and the upper triangle left white/empty.
+- Row labels on the left: "t0", "t1", "t2", "t3" (token indices).
+- Column labels on top: "t0", "t1", "t2", "t3".
+- Below the grid, text: "n = 4" and "Scores: 10".
+
+COLUMN 2 - Medium Sequence (n=8):
+- An 8x8 grid with the lower triangle filled in pastel blue and the upper triangle left white/empty. The grid is visibly larger than the 4x4 grid.
+- Row and column labels: "t0" through "t7".
+- Below the grid, text: "n = 8" and "Scores: 36".
+
+COLUMN 3 - Large Sequence (n=16):
+- A 16x16 grid with the lower triangle filled in pastel blue and the upper triangle left white/empty. This grid is much larger, visually showing the explosion.
+- Row and column labels can be abbreviated (just show "t0", "...", "t15").
+- Below the grid, text: "n = 16" and "Scores: 136".
+
+BETWEEN THE COLUMNS:
+- Red curved arrows or lines showing "4x growth" between columns 1 and 2, and "4x growth" between columns 2 and 3.
+- Or alternatively, a formula annotation: "Doubling n → 4x more scores (quadratic)".
+
+BOTTOM ANNOTATION:
+- A single line of text: "Full attention scales as O(n²): doubling the sequence length quadruples the computation."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for filled attention cells, light gray borders for grid cells, solid black arrows, red text for the growth annotations. White background throughout. All text clearly readable.

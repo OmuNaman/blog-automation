@@ -1,0 +1,42 @@
+The Rolling Buffer KV Cache: A Fixed-Size Circular Buffer
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the rolling buffer KV cache concept as a circular buffer. Layout combines a circular diagram with a linear representation.
+
+TOP - "Circular Buffer Visualization":
+- A circle divided into 3 equal segments (w = 3), like a pie chart.
+- Each segment is a cache slot:
+  - Slot 0: labeled "pos % 3 = 0", pastel blue fill
+  - Slot 1: labeled "pos % 3 = 1", pastel green fill
+  - Slot 2: labeled "pos % 3 = 2", pastel orange fill
+- A curved arrow going clockwise around the circle, indicating the write direction.
+- A pointer/arrow labeled "Write head" pointing to one of the slots.
+- Center text: "Fixed size: w = 3"
+
+BOTTOM - "Linear Buffer View":
+- A horizontal array of 3 boxes representing the buffer slots:
+  - Slot 0: pastel blue
+  - Slot 1: pastel green
+  - Slot 2: pastel orange
+- Above each slot, show the formula:
+  - Slot 0: "step % 3 = 0"
+  - Slot 1: "step % 3 = 1"
+  - Slot 2: "step % 3 = 2"
+
+RIGHT SIDE - Example Mapping Table:
+A small table showing which step writes to which slot:
+| Step | Slot (step % 3) | Token Stored |
+|------|-----------------|--------------|
+| 0    | 0               | "The"        |
+| 1    | 1               | "cat"        |
+| 2    | 2               | "sat"        |
+| 3    | 0               | "on" (overwrites "The") |
+| 4    | 1               | "the" (overwrites "cat") |
+| 5    | 2               | "warm" (overwrites "sat") |
+
+KEY INSIGHT BOX:
+- "Cache size is FIXED at w = 3, regardless of how many tokens are generated."
+- "Old entries are automatically overwritten because they will never be attended to again."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue/green/orange for the three slots (consistent colors throughout). The circular buffer should be the visual focus. White background throughout.

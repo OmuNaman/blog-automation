@@ -1,0 +1,37 @@
+Step 1: The Causal Mask
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the causal (autoregressive) mask as an 8x8 grid matrix. This is step 1 of a 3-step mask construction process.
+
+HEADER:
+- Title: "Step 1: Causal Mask" in bold at the top.
+- Subtitle: "Rule: token i can attend to token j only if j <= i"
+
+THE MATRIX:
+- An 8x8 grid of cells.
+- Row labels on the left: 0, 1, 2, 3, 4, 5, 6, 7 (representing query positions).
+- Column labels on top: 0, 1, 2, 3, 4, 5, 6, 7 (representing key positions).
+- Left axis label: "Query position (i)".
+- Top axis label: "Key position (j)".
+
+CELL VALUES AND COLORS:
+- Lower triangle (j <= i): each cell contains the number "1" and is filled with pastel blue.
+- Upper triangle (j > i): each cell contains the number "0" and is filled with light red or pink (to indicate blocked/masked).
+- The diagonal is included in the lower triangle (blue, value 1).
+
+Exact pattern:
+Row 0: [1, 0, 0, 0, 0, 0, 0, 0]
+Row 1: [1, 1, 0, 0, 0, 0, 0, 0]
+Row 2: [1, 1, 1, 0, 0, 0, 0, 0]
+Row 3: [1, 1, 1, 1, 0, 0, 0, 0]
+Row 4: [1, 1, 1, 1, 1, 0, 0, 0]
+Row 5: [1, 1, 1, 1, 1, 1, 0, 0]
+Row 6: [1, 1, 1, 1, 1, 1, 1, 0]
+Row 7: [1, 1, 1, 1, 1, 1, 1, 1]
+
+ANNOTATION:
+- An arrow pointing to the diagonal with text "Diagonal: token attends to itself".
+- Below the matrix: "No token can peek into the future."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for allowed (1), light pink/red for blocked (0), thin black grid lines. White background throughout.

@@ -1,0 +1,37 @@
+Step 2: The Window Distance Mask
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the window distance constraint mask as an 8x8 grid matrix. This is step 2 of the 3-step mask construction process.
+
+HEADER:
+- Title: "Step 2: Window Mask (w = 3)" in bold at the top.
+- Subtitle: "Rule: token i can attend to token j only if i - j < w (distance < 3)"
+
+THE MATRIX:
+- An 8x8 grid of cells.
+- Row labels on the left: 0, 1, 2, 3, 4, 5, 6, 7.
+- Column labels on top: 0, 1, 2, 3, 4, 5, 6, 7.
+- Left axis label: "Query position (i)".
+- Top axis label: "Key position (j)".
+
+CELL VALUES AND COLORS:
+- Cells where |i - j| < 3 (within window distance): value "1", filled with pastel green.
+- Cells where |i - j| >= 3 (outside window): value "0", filled with light red or pink.
+
+This creates a BAND centered on the diagonal, extending in BOTH directions (since this is just the window constraint, not yet combined with causal):
+
+Row 0: [1, 1, 1, 0, 0, 0, 0, 0]
+Row 1: [1, 1, 1, 1, 0, 0, 0, 0]
+Row 2: [1, 1, 1, 1, 1, 0, 0, 0]
+Row 3: [0, 1, 1, 1, 1, 1, 0, 0]
+Row 4: [0, 0, 1, 1, 1, 1, 1, 0]
+Row 5: [0, 0, 0, 1, 1, 1, 1, 1]
+Row 6: [0, 0, 0, 0, 1, 1, 1, 1]
+Row 7: [0, 0, 0, 0, 0, 1, 1, 1]
+
+ANNOTATION:
+- A bracket or brace indicating the band width with text "Window width = 2w - 1 = 5 cells".
+- Below the matrix: "The band extends symmetrically around the diagonal. Only nearby positions are within the window."
+
+Style: Clean academic illustration with sans-serif labels, pastel green for within-window (1), light pink for outside-window (0), thin black grid lines. White background throughout.

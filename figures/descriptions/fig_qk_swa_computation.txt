@@ -1,0 +1,43 @@
+Q times K-Transpose with Sliding Window Attention Masking
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the Q * K^T computation with the SWA mask applied, highlighting that only the banded region contains meaningful scores. Layout is left-to-right.
+
+LEFT - Query Matrix Q:
+- A tall rectangular matrix, shape "(8, 4)", pastel blue fill.
+- Row labels: "q_0" through "q_7".
+
+MULTIPLICATION SYMBOL:
+- A large "x" between Q and K^T.
+
+MIDDLE - Key Matrix Transposed K^T:
+- A wide rectangular matrix, shape "(4, 8)", pastel green fill.
+- Column labels: "k_0" through "k_7".
+
+EQUALS SIGN:
+- A large "=" symbol.
+
+RIGHT - Masked Scores Matrix:
+- An 8x8 matrix showing the result AFTER mask application.
+- The banded diagonal region (the SWA window) is filled with pastel yellow/orange, representing the 21 meaningful scores.
+- The rest of the cells (outside the band) are filled with light gray or white, with small "0" values to indicate they are zeroed out by the mask.
+
+The banded pattern:
+Row 0: [score, 0, 0, 0, 0, 0, 0, 0]
+Row 1: [score, score, 0, 0, 0, 0, 0, 0]
+Row 2: [score, score, score, 0, 0, 0, 0, 0]
+Row 3: [0, score, score, score, 0, 0, 0, 0]
+Row 4: [0, 0, score, score, score, 0, 0, 0]
+Row 5: [0, 0, 0, score, score, score, 0, 0]
+Row 6: [0, 0, 0, 0, score, score, score, 0]
+Row 7: [0, 0, 0, 0, 0, score, score, score]
+
+- Shape label "(8, 8)" above the result.
+- Bold text: "21 effective scores (vs 64 full)".
+
+ANNOTATION:
+- A bracket or highlight on the diagonal band with label "Window band (w = 3)".
+- Text below: "Only scores within the sliding window contribute to the output. 67% of computations are eliminated."
+
+Style: Clean academic illustration with sans-serif labels, pastel yellow for active scores in the band, light gray for masked-out cells. White background throughout.

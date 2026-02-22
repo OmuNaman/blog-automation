@@ -1,0 +1,42 @@
+Converting the Binary Mask to Attention Scores
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows how the binary SWA mask is converted to an additive attention mask with 0 and negative infinity values. Layout is left-to-right with two matrices and an arrow between them.
+
+LEFT MATRIX - "Binary Mask":
+- An 8x8 grid showing the SWA mask pattern.
+- Cells with value "1" are filled with pastel lavender and display "1".
+- Cells with value "0" are filled with light gray and display "0".
+
+The SWA mask pattern:
+Row 0: [1, 0, 0, 0, 0, 0, 0, 0]
+Row 1: [1, 1, 0, 0, 0, 0, 0, 0]
+Row 2: [1, 1, 1, 0, 0, 0, 0, 0]
+Row 3: [0, 1, 1, 1, 0, 0, 0, 0]
+Row 4: [0, 0, 1, 1, 1, 0, 0, 0]
+Row 5: [0, 0, 0, 1, 1, 1, 0, 0]
+Row 6: [0, 0, 0, 0, 1, 1, 1, 0]
+Row 7: [0, 0, 0, 0, 0, 1, 1, 1]
+- Label below: "Binary Mask"
+
+ARROW:
+- A large right-pointing arrow between the two matrices.
+- Text above the arrow: "1 → 0" and "0 → -∞"
+
+RIGHT MATRIX - "Additive Mask":
+- An 8x8 grid with the same layout.
+- Cells that were "1" now show "0" and are filled with pastel lavender (allowed, no change to score).
+- Cells that were "0" now show "-∞" and are filled with dark red/maroon (blocked, will become zero after softmax).
+
+The additive mask pattern:
+Row 0: [0, -∞, -∞, -∞, -∞, -∞, -∞, -∞]
+Row 1: [0, 0, -∞, -∞, -∞, -∞, -∞, -∞]
+...and so on following the SWA pattern.
+- Label below: "Additive Mask"
+
+BOTTOM ANNOTATION:
+- A text box or annotation: "After softmax: e^0 = 1 (score unchanged), e^(-∞) = 0 (score eliminated)"
+- This explains why the trick works.
+
+Style: Clean academic illustration with sans-serif labels, pastel lavender for allowed positions, dark red or maroon for blocked positions, thin black grid lines. White background throughout. The "-∞" symbols must be clearly readable.

@@ -1,0 +1,37 @@
+The Core Idea of Sliding Window Attention
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram illustrates the sliding window concept visually using a horizontal sequence of tokens with highlighted attention windows. Layout is top-to-bottom.
+
+TOP SECTION - "The Sequence":
+- A horizontal row of 8 rounded rectangles representing tokens, evenly spaced, each with a pastel gray fill and black border.
+- Labels inside each box: "The" (0), "cat" (1), "sat" (2), "on" (3), "the" (4), "warm" (5), "soft" (6), "mat" (7).
+- Token index numbers shown below each box in small gray text.
+
+MIDDLE SECTION - "The Sliding Window (w=3)":
+Show three example windows, stacked vertically with some spacing:
+
+Window Example 1 (for token "on", position 3):
+- The same 8 tokens shown as a row.
+- A colored bracket or highlighted region covering tokens at positions 1, 2, 3 ("cat", "sat", "on") in pastel green.
+- The other tokens are dimmed (very light gray fill).
+- An arrow from "on" pointing down to a label: "Token 'on' attends to: cat, sat, on".
+- Label: "w = 3"
+
+Window Example 2 (for token "soft", position 6):
+- Same 8 tokens row.
+- Highlighted region covering positions 4, 5, 6 ("the", "warm", "soft") in pastel green.
+- Other tokens dimmed.
+- Label: "Token 'soft' attends to: the, warm, soft".
+
+Window Example 3 (for token "mat", position 7):
+- Same 8 tokens row.
+- Highlighted region covering positions 5, 6, 7 ("warm", "soft", "mat") in pastel green.
+- Other tokens dimmed.
+- Label: "Token 'mat' attends to: warm, soft, mat".
+
+BOTTOM ANNOTATION:
+- Text: "The window slides along the sequence. Each token sees exactly w = 3 neighbors (including itself)."
+
+Style: Clean academic illustration with sans-serif labels, pastel green for highlighted windows, light gray for dimmed tokens, solid black borders. Arrows or brackets to indicate the window span. White background throughout.

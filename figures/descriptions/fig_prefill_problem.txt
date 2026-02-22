@@ -1,0 +1,35 @@
+The Pre-fill Memory Problem: Full vs Chunked
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram compares two approaches to processing a long prompt: standard (one big forward pass) vs chunked pre-fill. Layout is two columns, left and right.
+
+LEFT COLUMN - "Standard Pre-fill":
+- Title: "Standard: One Forward Pass" in bold.
+- A large square representing the attention matrix for an 8-token prompt.
+- The square is 8x8 with the full lower triangle filled in pastel red/pink (indicating high memory usage).
+- Label inside: "(8, 8) attention matrix"
+- Label below: "Peak memory: O(n^2)"
+- A warning icon or text: "Memory spike!"
+- Arrow pointing to the large square: "Must materialize the ENTIRE attention matrix at once"
+
+RIGHT COLUMN - "Chunked Pre-fill":
+- Title: "Chunked: Window-Sized Pieces" in bold.
+- Three smaller squares representing chunks:
+  - Chunk 1: a 3x3 attention matrix, pastel green fill. Label: "Chunk 1: tokens 0-2"
+  - Chunk 2: a 3x3 attention matrix, pastel green fill. Label: "Chunk 2: tokens 3-5"
+  - Chunk 3: a 2x2 attention matrix, pastel green fill. Label: "Chunk 3: tokens 6-7"
+- The three chunks are arranged vertically with arrows between them showing sequential processing.
+- Label below all chunks: "Peak memory: O(w^2)"
+- A checkmark icon or text: "Low, constant memory"
+- Arrow: "Process one chunk at a time, each only w x w"
+
+BETWEEN COLUMNS:
+- An arrow or "vs" label.
+
+BOTTOM COMPARISON:
+- "8K tokens, standard: ~4,160 MB peak memory"
+- "8K tokens, chunked (w=4096): ~1,056 MB peak memory"
+- "74.6% reduction in peak memory"
+
+Style: Clean academic illustration with sans-serif labels, pastel red for the large (expensive) matrix, pastel green for the small (efficient) chunks. The size contrast should make the memory savings visually obvious. White background throughout.

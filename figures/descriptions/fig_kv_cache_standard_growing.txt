@@ -1,0 +1,42 @@
+Standard KV Cache: Growing Linearly with Generation
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows how a standard KV cache grows with each generation step. Layout is a series of horizontal bars showing the cache state at different steps.
+
+TITLE:
+- "Standard KV Cache: Grows with Every New Token" in bold.
+
+THE VISUALIZATION:
+Show the cache state at 5 different generation steps, arranged top to bottom:
+
+Step 1:
+- A horizontal bar with 1 cell filled with pastel blue, labeled "K_0, V_0".
+- Cache size: "1 entry"
+
+Step 3:
+- A horizontal bar with 3 cells filled with pastel blue, labeled "K_0, V_0 | K_1, V_1 | K_2, V_2".
+- Cache size: "3 entries"
+
+Step 8:
+- A longer bar with 8 cells, all filled with pastel blue.
+- Cache size: "8 entries"
+
+Step 15:
+- An even longer bar with 15 cells, all blue.
+- Cache size: "15 entries"
+
+Step 20:
+- The longest bar with 20 cells, all blue.
+- Cache size: "20 entries"
+
+Each bar should be proportionally longer than the previous, visually showing the growth.
+
+RIGHT SIDE:
+- A vertical arrow pointing down labeled "Cache grows forever".
+- Text: "Memory: O(n) per layer, unbounded"
+
+PROBLEM CALLOUT:
+- A red-bordered text box: "Problem: For long generations (thousands of tokens), the cache consumes gigabytes of memory."
+
+Style: Clean academic illustration with sans-serif labels, pastel blue for cache entries. Each bar is a row of small rectangles. White background throughout. The growing pattern should be visually obvious.

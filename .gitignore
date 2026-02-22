@@ -1,0 +1,5 @@
+.env
+__pycache__/
+*.pyc
+.claude/projects/
+figures/output/run_*/

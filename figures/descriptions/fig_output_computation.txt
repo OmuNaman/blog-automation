@@ -1,0 +1,46 @@
+The Final Output Computation with SWA
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows the full output computation: attention weights (after softmax and masking) multiplied by the value matrix V. Layout is left-to-right showing matrix multiplication.
+
+LEFT - Attention Weights Matrix:
+- An 8x8 matrix with shape label "(8, 8)".
+- The banded diagonal region (SWA window) contains example weight values in pastel lavender fill.
+- All cells outside the band contain "0" with white/light gray fill.
+
+Example values in the band (each row sums to 1.0):
+Row 0: [1.00, 0, 0, 0, 0, 0, 0, 0]
+Row 1: [0.40, 0.60, 0, 0, 0, 0, 0, 0]
+Row 2: [0.20, 0.35, 0.45, 0, 0, 0, 0, 0]
+Row 3: [0, 0.25, 0.35, 0.40, 0, 0, 0, 0]
+Row 4: [0, 0, 0.20, 0.30, 0.50, 0, 0, 0]
+Row 5: [0, 0, 0, 0.15, 0.35, 0.50, 0, 0]
+Row 6: [0, 0, 0, 0, 0.27, 0.50, 0.23, 0]
+Row 7: [0, 0, 0, 0, 0, 0.30, 0.35, 0.35]
+
+- Label below: "Attention Weights (sparse)".
+
+MULTIPLICATION SYMBOL:
+- "x" between the matrices.
+
+MIDDLE - Value Matrix V:
+- A rectangular matrix with shape label "(8, 4)".
+- Pastel orange fill.
+- Row labels: "v_0" through "v_7".
+- Label below: "Values".
+
+EQUALS SIGN:
+- "=" symbol.
+
+RIGHT - Output Matrix:
+- A rectangular matrix with shape label "(8, 4)".
+- Pastel purple fill.
+- Row labels: "out_0" through "out_7".
+- Label below: "Output".
+
+KEY INSIGHT (annotation box):
+- "Each output row is a weighted sum of at most w = 3 value vectors."
+- "out_6 = 0.27 * v_4 + 0.50 * v_5 + 0.23 * v_6"
+
+Style: Clean academic illustration with sans-serif labels, pastel lavender for attention weights, pastel orange for V, pastel purple for output. White background throughout. Shape labels clearly visible.

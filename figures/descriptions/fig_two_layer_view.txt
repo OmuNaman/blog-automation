@@ -1,0 +1,36 @@
+Two-Layer View: Receptive Field Expands to 5 Tokens
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no colored background, no gradient. The diagram must have a clean white background suitable for an academic paper/blog post.
+
+This diagram shows how stacking two SWA layers expands the receptive field for token "mat". Layout is three horizontal rows (layers) stacked vertically.
+
+TOP ROW - "Layer 2":
+- A single highlighted token box at position 7, labeled "mat", with pastel purple fill. This is the focus token.
+
+MIDDLE ROW - "Layer 1":
+- 8 token boxes in a row.
+- Positions 5, 6, 7 ("warm", "soft", "mat") are highlighted with pastel blue fill (directly attended by "mat" at layer 2).
+- Positions 0-4 are light gray (not directly accessible at this step).
+- Three solid black arrows from "mat" (layer 2) down to positions 5, 6, 7 (layer 1).
+
+BOTTOM ROW - "Layer 0 (Input)":
+- 8 token boxes in a row.
+- Positions 3, 4, 5, 6, 7 ("on", "the", "warm", "soft", "mat") are highlighted with pastel green fill. These are the positions accessible because:
+  - "warm" (5) at layer 1 attended to positions 3, 4, 5
+  - "soft" (6) at layer 1 attended to positions 4, 5, 6
+  - "mat" (7) at layer 1 attended to positions 5, 6, 7
+- Positions 0, 1, 2 are light gray (still outside the expanded receptive field).
+- Arrows from each layer 1 token down to its respective window at layer 0:
+  - From "warm" (5) at layer 1 to positions 3, 4, 5 at layer 0 (thin gray arrows)
+  - From "soft" (6) at layer 1 to positions 4, 5, 6 at layer 0 (thin gray arrows)
+  - From "mat" (7) at layer 1 to positions 5, 6, 7 at layer 0 (thin gray arrows)
+
+WINDOW BRACKETS:
+- At layer 1: bracket under positions 5-7 labeled "Direct window (w=3)"
+- At layer 0: bracket under positions 3-7 labeled "Expanded receptive field (2w-1=5)"
+
+ANNOTATION:
+- Text: "R_2 = 2 x 3 = 6, but capped by sequence boundary at 5 tokens here"
+- "Indirect access through relay tokens at layer 1"
+
+Style: Clean academic illustration with sans-serif labels, pastel purple for focus token, pastel blue for directly attended tokens, pastel green for indirectly accessible tokens, light gray for inaccessible. Solid black arrows for direct attention, thin gray arrows for indirect paths. White background throughout. Layer labels on the left side.
