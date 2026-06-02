@@ -1,0 +1,49 @@
+The Memory Loss Problem in Sequences (Solved by Attention)
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram shows the analogy between information loss in sequences (which attention solved) and information dilution in depth (which AttnRes solves). This figure focuses on the sequence side: how early tokens get forgotten without attention, and how attention enables selective retrieval.
+
+== LAYOUT ==
+- Two rows, top and bottom
+- Top row: "Without Attention (RNN)" showing information decay
+- Bottom row: "With Attention (Transformer)" showing selective access
+- Clear dividing line or label between the two rows
+
+== COMPONENTS ==
+Top Row - Without Attention:
+1. Five token boxes in a horizontal line: "The", "cat", "sat", "on", "the"
+   - Shape: small rounded rectangles
+   - Colors: gradient from bright blue #B3D9FF (first token) to very faded/light gray #F0F0F0 (last visible)
+   - The first tokens should appear faded/transparent to show they are being "forgotten"
+   - Arrow from left to right showing sequential processing
+   - Label above: "Sequential Processing (RNN)"
+   - Annotation: "Early tokens progressively forgotten"
+
+2. Hidden state box at the right end
+   - Shape: rounded rectangle
+   - Color: light gray #E0E0E0
+   - Label: "h_5: mostly recent info"
+
+Bottom Row - With Attention:
+3. Same five token boxes, all equally bright/vivid
+   - Shape: small rounded rectangles
+   - Color: all light blue #B3D9FF (equally bright)
+   - Label above: "Attention-Based Processing (Transformer)"
+
+4. A "query" arrow from the last token pointing back to ALL previous tokens
+   - Arrows of varying thickness to show different attention weights
+   - Thick arrow to "cat" (high attention)
+   - Thin arrow to "on" (low attention)
+   - Medium arrow to others
+   - Label: "Selective access to any position"
+
+5. Output box
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "h_5: selectively combines all tokens"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). Key message: attention solves the forgetting problem by enabling selective retrieval.

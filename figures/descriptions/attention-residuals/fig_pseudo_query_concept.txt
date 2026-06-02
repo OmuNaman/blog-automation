@@ -1,0 +1,60 @@
+The Pseudo-Query Vector: How Each Layer Selects Its Inputs
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+Each layer in AttnRes has a learned "pseudo-query" vector w_l that acts as a question: "which previous layers are most relevant for my computation?" This vector is dotted with normalized representations from all previous layers to produce attention weights.
+
+== LAYOUT ==
+- Center-focused diagram
+- A highlighted "current layer" box at the top
+- Below it, a pseudo-query vector w_l
+- Below that, a row of previous layer outputs
+- Arrows showing the dot product computation
+
+== COMPONENTS ==
+1. Current Layer box (top center)
+   - Shape: large rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "Layer l (current)"
+   - Bold border to highlight
+
+2. Pseudo-Query Vector
+   - Shape: horizontal rectangle showing a vector
+   - Color: peach #FFD4B8
+   - Label: "w_l (learned pseudo-query)"
+   - Subtitle: "Shape: (d,) = (8,)"
+   - Show 8 cells with example values: [0.3, -0.1, 0.5, 0.2, -0.4, 0.1, 0.6, -0.2]
+
+3. Previous layer outputs (bottom row)
+   - 4 rounded rectangles arranged horizontally
+   - Box 0: light blue #B3D9FF, label "v_0 (embeddings)"
+   - Box 1: soft green #B8E6B8, label "v_1 (layer 1 output)"
+   - Box 2: soft green #B8E6B8, label "v_2 (layer 2 output)"
+   - Box 3: soft green #B8E6B8, label "v_3 (layer 3 output)"
+   - Each shows "Shape: (4, 8)" below
+
+4. RMSNorm boxes
+   - Small boxes between the query and the layer outputs
+   - Color: light gray #E0E0E0
+   - Label: "RMSNorm"
+   - One per previous layer output
+
+5. Dot product arrows
+   - Arrows from w_l going down to each RMSNorm-ed output
+   - Labels: "dot product"
+   - Results shown: "score_0 = 0.2", "score_1 = 0.8", "score_2 = 1.5", "score_3 = 0.6"
+
+6. Softmax box
+   - Below the scores
+   - Color: lavender #D4B8E6
+   - Label: "Softmax"
+   - Output: "alpha_0=0.05, alpha_1=0.20, alpha_2=0.55, alpha_3=0.20"
+
+7. Callout annotation
+   - Text: "The pseudo-query is a fixed learned parameter, but the attention weights are input-dependent because the keys (v_i) depend on the input"
+   - Light yellow background
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The pseudo-query vector should be visually prominent.

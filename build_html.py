@@ -6,8 +6,12 @@ import os
 from pathlib import Path
 
 BASE_DIR = Path(r"d:\Coding_Workspace\Blog_automation")
-MD_PATH = BASE_DIR / "published" / "sliding-window-attention.md"
-HTML_PATH = BASE_DIR / "published" / "sliding-window-attention.html"
+import sys
+
+# Allow command-line override: python build_html.py <topic-slug>
+_slug = sys.argv[1] if len(sys.argv) > 1 else "sliding-window-attention"
+MD_PATH = BASE_DIR / "published" / f"{_slug}.md"
+HTML_PATH = BASE_DIR / "published" / f"{_slug}.html"
 FIGURES_DIR = BASE_DIR / "figures" / "output"
 
 
@@ -438,7 +442,9 @@ def main():
     print("Converting markdown to HTML with embedded images...")
     body_html, image_count = convert_markdown_to_html(md_text)
 
-    title = "Sliding Window Attention: How Modern LLMs See the World Through a Narrow Lens"
+    # Extract title from first H1 in the markdown
+    title_match = re.search(r'^# (.+)$', md_text, re.MULTILINE)
+    title = title_match.group(1) if title_match else _slug.replace("-", " ").title()
     full_html = build_html(body_html, title)
 
     print(f"\nWriting HTML to {HTML_PATH}...")
@@ -452,7 +458,7 @@ def main():
     print(f"{'='*40}")
     print(f"File: {HTML_PATH}")
     print(f"Size: {size_mb:.1f} MB")
-    print(f"Images embedded: {image_count} of 35")
+    print(f"Images embedded: {image_count}")
     print(f"Word count: {word_count}")
 
 

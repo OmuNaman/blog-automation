@@ -1,0 +1,62 @@
+Standard Residual Connections vs Attention Residuals: Side-by-Side Architecture
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This is the key comparison diagram showing the architectural difference between standard residual connections (left) and Attention Residuals (right). In standard residuals, every layer adds with weight 1.0. In AttnRes, every layer uses learned attention to selectively weight previous outputs.
+
+== LAYOUT ==
+- Two panels side by side, clearly labeled
+- Left: "Standard Residuals"
+- Right: "Attention Residuals (AttnRes)"
+- Both show 4 layers processing from bottom to top
+
+== COMPONENTS ==
+Left Panel - Standard Residuals:
+1. Input box at bottom
+   - Color: light blue #B3D9FF
+   - Label: "x (embeddings)"
+
+2. Four layer boxes stacked vertically: "Layer 1", "Layer 2", "Layer 3", "Layer 4"
+   - Color: soft green #B8E6B8
+   - Each has a "+" merge circle on the residual stream
+
+3. A thick vertical line (residual stream) connecting all layers
+   - Gets progressively thicker going up (showing growth)
+   - Each "+" circle labeled "w=1.0"
+
+4. Output at top
+   - Color: lavender #D4B8E6
+   - Label: "h_4 (growing magnitude)"
+
+5. Red warning annotation: "Fixed weights, magnitude grows O(L)"
+
+Right Panel - Attention Residuals:
+6. Same input box at bottom
+   - Color: light blue #B3D9FF
+   - Label: "x (embeddings)"
+
+7. Four layer boxes stacked vertically: "Layer 1", "Layer 2", "Layer 3", "Layer 4"
+   - Color: soft green #B8E6B8
+
+8. Instead of a simple residual stream, each layer has:
+   - A small "w_l" query vector box (peach #FFD4B8)
+   - Arrows going DOWN from w_l to ALL previous layer outputs
+   - Arrow thickness varies (showing different attention weights)
+   - A softmax symbol or label on the arrows
+   - Labels: "alpha_0", "alpha_1", etc.
+
+9. Output at top
+   - Color: lavender #D4B8E6
+   - Label: "h_4 (bounded magnitude)"
+
+10. Green checkmark annotation: "Learned weights, magnitude bounded"
+
+== CONNECTIONS ==
+Left: Simple "+" addition arrows at each layer
+Right: Fan-out attention arrows from each layer's query to all previous layers
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The contrast between the two approaches should be visually striking.
+The left side should feel "rigid/fixed", the right side should feel "selective/dynamic".

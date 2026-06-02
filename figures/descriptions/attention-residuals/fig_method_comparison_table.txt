@@ -1,0 +1,59 @@
+Comparison of Depth-Wise Aggregation Methods
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+A visual comparison table showing the key properties of different depth-wise aggregation approaches: Standard Residuals, DenseFormer, DeepCrossAttention, ResFormer, and AttnRes. Compares weight type, expressiveness, overhead, and key properties.
+
+== LAYOUT ==
+- A structured comparison with 5 rows (one per method) and visual indicators
+- Left column: method names with mini schematics
+- Right columns: property indicators
+
+== COMPONENTS ==
+1. Table header row
+   - Columns: "Method", "Weights", "Input-Dependent?", "Overhead", "Key Property"
+   - Color: light gray #E0E0E0 background
+   - Bold text
+
+2. Row 1: Standard Residuals
+   - Color: white row
+   - Weights: "Fixed (all 1.0)"
+   - Input-Dependent: Red X
+   - Overhead: "0%"
+   - Key Property: "O(L) hidden state growth"
+   - Small icon: simple plus sign
+
+3. Row 2: DenseFormer
+   - Color: light blue #F0F5FF background
+   - Weights: "Learned scalars"
+   - Input-Dependent: Red X (input-independent)
+   - Overhead: "Minimal"
+   - Key Property: "Fixed weights per layer pair"
+
+4. Row 3: ResFormer
+   - Color: white row
+   - Weights: "Value residuals from layer 1"
+   - Input-Dependent: Red X
+   - Overhead: "~0%"
+   - Key Property: "Addresses attention concentration"
+
+5. Row 4: DeepCrossAttention
+   - Color: light blue #F0F5FF background
+   - Weights: "Learned, input-dependent"
+   - Input-Dependent: Green checkmark
+   - Overhead: "Moderate"
+   - Key Property: "Full cross-attention, 3x speedup claimed"
+
+6. Row 5: AttnRes (highlighted)
+   - Color: soft green #E8F5E8 background with bold border
+   - Weights: "Softmax attention via pseudo-query"
+   - Input-Dependent: Green checkmark
+   - Overhead: "<2% inference"
+   - Key Property: "Bounded magnitudes, 1.25x compute advantage"
+   - Star or highlight indicator
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The AttnRes row should be visually highlighted as the focus method.
+Table should be clean and easy to read with clear visual hierarchy.

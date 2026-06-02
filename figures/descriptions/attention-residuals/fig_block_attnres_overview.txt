@@ -1,0 +1,72 @@
+Block AttnRes Architecture: Partitioned Layers with Block-Level Attention
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+Block AttnRes partitions L layers into N blocks (~8 blocks optimal). Within each block, standard residual connections accumulate outputs normally. At block boundaries, attention-based aggregation selectively combines all previous block representations plus the original token embedding.
+
+== LAYOUT ==
+- Direction: bottom-to-top
+- Show a model with 24 layers partitioned into 4 blocks of 6 layers each (simplified from 48/8)
+- Token embedding always accessible at every block boundary
+- Block boundaries highlighted with attention mechanism
+
+== COMPONENTS ==
+1. Token Embeddings (bottom)
+   - Shape: rounded rectangle
+   - Color: light blue #B3D9FF
+   - Label: "Token Embeddings x"
+   - Dashed arrows going up to EVERY block boundary (always available)
+
+2. Block 1 (layers 1-6)
+   - Large rounded rectangle containing 6 small layer boxes
+   - Color: soft green #B8E6B8 border, white interior
+   - Label: "Block 1 (Layers 1-6)"
+   - Internal: standard residual arrows (+1.0) between layers
+   - Output at top: "B_1 output"
+
+3. Block Boundary 1 (between Block 1 and 2)
+   - Highlighted attention mechanism
+   - Color: peach #FFD4B8
+   - Shape: diamond or special box labeled "Block Attention"
+   - Inputs: arrows from x (embeddings) and B_1 output
+   - Shows softmax with weights: "alpha_x, alpha_B1"
+   - Output: weighted combination feeding into Block 2
+
+4. Block 2 (layers 7-12)
+   - Same as Block 1 structure
+   - Color: lavender #D4B8E6 border
+   - Label: "Block 2 (Layers 7-12)"
+
+5. Block Boundary 2
+   - Inputs: arrows from x, B_1, and B_2
+   - Shows: "alpha_x, alpha_B1, alpha_B2"
+
+6. Block 3 (layers 13-18)
+   - Color: light pink #FFB8D4 border
+   - Label: "Block 3 (Layers 13-18)"
+
+7. Block Boundary 3
+   - Inputs from x, B_1, B_2, B_3
+
+8. Block 4 (layers 19-24)
+   - Color: light yellow #FFF3B8 border
+   - Label: "Block 4 (Layers 19-24)"
+
+9. Output at top
+   - Label: "Model Output"
+
+10. Annotations
+    - Inside blocks: "Standard Residuals (weight = 1.0)"
+    - At boundaries: "Attention-Based Aggregation"
+    - Side note: "Memory: O(Nd) not O(Ld)"
+
+== CONNECTIONS ==
+- Solid arrows within blocks (standard residuals)
+- Thick colored arrows at block boundaries (attention connections)
+- Dashed blue arrows from embeddings to every boundary
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The block boundaries with attention should be visually prominent.
+Each block should be clearly delineated as a group.

@@ -1,0 +1,44 @@
+Memory Comparison: Full AttnRes vs Block AttnRes
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+Full AttnRes stores all L layer outputs requiring O(Ld) memory. Block AttnRes stores only N block-level representations, reducing to O(Nd). For a 48-layer model with 8 blocks, this is a 6x memory reduction.
+
+== LAYOUT ==
+- Two panels side by side
+- Left: Full AttnRes memory visualization
+- Right: Block AttnRes memory visualization
+- Bottom: memory comparison bar
+
+== COMPONENTS ==
+Left Panel - Full AttnRes:
+1. A vertical stack of 48 small rectangles representing stored layer outputs
+   - Color: soft green #B8E6B8
+   - Each labeled faintly: "v_0", "v_1", ..., "v_47"
+   - Label: "Full AttnRes: Store ALL 48 layer outputs"
+   - Memory label: "Memory: O(L * d) = O(48 * d)"
+   - The stack should look dense and tall
+
+Right Panel - Block AttnRes:
+2. A vertical stack of only 8 larger rectangles representing block outputs
+   - Color: lavender #D4B8E6
+   - Each labeled: "Block 1", "Block 2", ..., "Block 8"
+   - Plus one extra box at bottom: "Embeddings x" (light blue)
+   - Label: "Block AttnRes: Store only 8 block outputs"
+   - Memory label: "Memory: O(N * d) = O(8 * d)"
+   - The stack should look sparse and compact
+
+3. Reduction annotation (center)
+   - Large text: "6x reduction"
+   - Arrow from left stack to right stack
+   - Color: bold black or red
+
+4. Bottom comparison bars
+   - Left bar: long, color soft green, label "48 stored representations"
+   - Right bar: short (1/6 length), color lavender, label "9 stored representations"
+   - Delta label: "6x less memory"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The dramatic memory reduction should be visually obvious.

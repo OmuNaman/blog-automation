@@ -1,0 +1,63 @@
+Evolution of Depth-Wise Aggregation in Deep Learning (2016-2026)
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+A timeline showing the progression from fixed residual connections (2016) through DenseNet, DenseFormer, ResFormer, DeepCrossAttention, to Attention Residuals (2026). Each step adds more expressiveness to how layers combine information across depth.
+
+== LAYOUT ==
+- Direction: left-to-right timeline
+- 6 milestones along a horizontal timeline bar
+- Each milestone has a small schematic showing the connection pattern
+
+== COMPONENTS ==
+1. Timeline bar
+   - Horizontal line from left to right
+   - Color: light gray #E0E0E0
+   - Year markers: 2016, 2017, 2020, 2024, 2025, 2026
+
+2. Milestone 1: Residual Connections (2016)
+   - Small schematic: two boxes with a simple "+" skip connection
+   - Label: "ResNet (He et al.)"
+   - Subtitle: "Fixed weight = 1.0"
+   - Color: light gray #E0E0E0
+
+3. Milestone 2: DenseNet (2016)
+   - Small schematic: multiple boxes with concatenation arrows to all previous
+   - Label: "DenseNet"
+   - Subtitle: "Concatenate all outputs"
+   - Color: light blue #B3D9FF
+
+4. Milestone 3: DenseFormer (Feb 2024)
+   - Small schematic: boxes with weighted arrows (scalar weights shown)
+   - Label: "DenseFormer (EPFL)"
+   - Subtitle: "Learned scalar weights (input-independent)"
+   - Color: soft green #B8E6B8
+
+5. Milestone 4: ResFormer (Oct 2024)
+   - Small schematic: value residual arrows from layer 1 to all layers
+   - Label: "ResFormer"
+   - Subtitle: "Value residual connections"
+   - Color: lavender #D4B8E6
+
+6. Milestone 5: DeepCrossAttention (Feb 2025)
+   - Small schematic: boxes with cross-attention arrows
+   - Label: "DCA (Google)"
+   - Subtitle: "Input-dependent cross-layer weights"
+   - Color: light pink #FFB8D4
+
+7. Milestone 6: Attention Residuals (Mar 2026)
+   - Small schematic: boxes with softmax attention over depth
+   - Label: "AttnRes (Kimi/Moonshot)"
+   - Subtitle: "Full softmax attention over depth"
+   - Color: peach #FFD4B8
+   - Highlighted with thicker border or star to indicate "this article"
+
+8. Bottom annotation
+   - Arrow labeled "Increasing expressiveness" from left to right
+   - Text: "From fixed to learned to input-dependent to full attention"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The progression should feel like natural evolution.
+Each milestone's mini-schematic should be very simple (2-3 boxes with arrows).

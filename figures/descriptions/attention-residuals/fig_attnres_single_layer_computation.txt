@@ -1,0 +1,68 @@
+AttnRes Computation at Layer 4: Detailed Step-by-Step
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram shows the complete AttnRes computation at layer 4 in detail. The pseudo-query w_4 computes dot products with RMSNorm-normalized representations from layers 0-3, producing logits that pass through softmax to yield attention weights. The output h_4 is the weighted sum.
+
+== LAYOUT ==
+- Direction: top-to-bottom flow diagram
+- Top: pseudo-query w_4
+- Middle: dot products with previous layer outputs
+- Bottom: softmax and weighted aggregation
+
+== COMPONENTS ==
+1. Pseudo-query w_4
+   - Shape: horizontal vector bar with 8 cells
+   - Color: peach #FFD4B8
+   - Label: "w_4 (pseudo-query for layer 4)"
+   - Position: top center
+
+2. Previous layer outputs row
+   - Four boxes arranged horizontally
+   - v_0: light blue #B3D9FF, label "v_0 (embed)"
+   - v_1: soft green #B8E6B8, label "v_1"
+   - v_2: soft green #B8E6B8, label "v_2"
+   - v_3: soft green #B8E6B8, label "v_3"
+
+3. RMSNorm step
+   - Four small "RMSNorm" boxes, one below each v_i
+   - Color: light gray #E0E0E0
+   - Arrows from each v_i down through RMSNorm
+   - Output labels: "k_0", "k_1", "k_2", "k_3"
+
+4. Dot product computation
+   - Four "dot" circles between w_4 and each k_i
+   - Arrows from w_4 going down to each dot circle
+   - Arrows from each k_i going up to each dot circle
+   - Output labels: "logit_0 = 0.2", "logit_1 = 0.8", "logit_2 = 1.5", "logit_3 = 0.6"
+
+5. Softmax box
+   - Shape: wide rounded rectangle
+   - Color: lavender #D4B8E6
+   - Label: "Softmax"
+   - Input: [0.2, 0.8, 1.5, 0.6]
+   - Output: [0.08, 0.15, 0.55, 0.22]
+   - Labels: "alpha_0=0.08", "alpha_1=0.15", "alpha_2=0.55", "alpha_3=0.22"
+
+6. Weighted sum
+   - Four multiplication symbols: "alpha_i x v_i"
+   - Then a summation symbol
+   - Result: "h_4 = 0.08*v_0 + 0.15*v_1 + 0.55*v_2 + 0.22*v_3"
+   - Color: soft green #B8E6B8
+   - Annotation: "Layer 4 draws 55% from layer 2's output"
+
+7. Output box
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8 with bold border
+   - Label: "h_4"
+   - Annotation: "||h_4|| is bounded (convex combination)"
+
+== CONNECTIONS ==
+- Solid black arrows for data flow throughout
+- Dashed annotation arrows for labels
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The flow should be clear and easy to follow top to bottom.
+Concrete numbers make the computation tangible.

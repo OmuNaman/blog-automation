@@ -1,0 +1,56 @@
+Input-Dependent Attention Weights: Different Tokens, Different Layer Preferences
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram demonstrates that different tokens produce different attention weight distributions over previous layers. The same pseudo-query w_l produces different weights because the keys (derived from layer outputs) depend on the input token. This is the key advantage over fixed-weight approaches.
+
+== LAYOUT ==
+- Direction: left-to-right, showing 3 different tokens' weight distributions side by side
+- Each column shows one token's attention weights at layer 4
+- A shared set of source layers on the left
+
+== COMPONENTS ==
+1. Source layers (left column, shared)
+   - 4 boxes stacked vertically
+   - "v_0 (embed)": light blue #B3D9FF
+   - "v_1 (layer 1)": soft green #B8E6B8
+   - "v_2 (layer 2)": soft green #B8E6B8
+   - "v_3 (layer 3)": soft green #B8E6B8
+   - Label: "Previous Layer Outputs"
+
+2. Token "The" column
+   - Title: 'Token: "The"'
+   - Horizontal bar chart of attention weights:
+     - v_0: long bar (0.60) - light blue, label "alpha_0 = 0.60"
+     - v_1: short bar (0.15) - soft green
+     - v_2: short bar (0.15) - soft green
+     - v_3: short bar (0.10) - soft green
+   - Annotation: "Function word: attends mostly to embeddings"
+
+3. Token "cat" column
+   - Title: 'Token: "cat"'
+   - Horizontal bar chart:
+     - v_0: short bar (0.10)
+     - v_1: short bar (0.15)
+     - v_2: long bar (0.55) - highlighted bright
+     - v_3: medium bar (0.20)
+   - Annotation: "Content word: attends to intermediate layers"
+
+4. Token "down" column
+   - Title: 'Token: "down"'
+   - Horizontal bar chart:
+     - v_0: short bar (0.05)
+     - v_1: medium bar (0.25)
+     - v_2: medium bar (0.30)
+     - v_3: medium bar (0.40)
+   - Annotation: "Context-dependent: attends to recent layers"
+
+5. Key insight callout at bottom
+   - Text: "Same pseudo-query w_4, but different weights for each token"
+   - Subtitle: "This input-dependence is what makes AttnRes strictly more expressive than DenseFormer"
+   - Color: light yellow #FFF3B8 background
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The different bar patterns across tokens should be visually striking.

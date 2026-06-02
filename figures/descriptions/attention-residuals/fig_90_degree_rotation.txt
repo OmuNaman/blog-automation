@@ -1,0 +1,44 @@
+Rotating Attention 90 Degrees: From Time to Depth
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram illustrates the "90-degree rotation" metaphor. Standard self-attention operates along the horizontal axis (sequence/time). AttnRes takes the same mechanism and rotates it to operate along the vertical axis (depth/layers). A visual rotation animation-style diagram.
+
+== LAYOUT ==
+- Three panels: left, center arrow, right
+- Left: horizontal attention grid
+- Center: a curved rotation arrow with "Rotate 90 degrees" label
+- Right: vertical attention grid
+
+== COMPONENTS ==
+Left Panel - Horizontal Attention:
+1. A grid/matrix showing attention patterns
+   - 4 columns labeled "Token 1", "Token 2", "Token 3", "Token 4" along horizontal axis
+   - A highlighted row showing one token attending to all previous tokens
+   - Colored cells showing attention weights (darker = higher weight)
+   - Color: shades of blue #B3D9FF to dark blue
+   - Label above: "Standard Self-Attention"
+   - Label below: "Attends across sequence positions (horizontal)"
+   - An arrow labeled "Time/Sequence" pointing right along the horizontal axis
+
+Center:
+2. A large curved arrow rotating from horizontal to vertical
+   - Color: black, bold
+   - Label: "Rotate 90 degrees"
+   - The arrow should curve from pointing right to pointing down
+
+Right Panel - Vertical Attention:
+3. A grid/matrix showing depth attention patterns
+   - 4 rows labeled "Layer 1", "Layer 2", "Layer 3", "Layer 4" along vertical axis
+   - A highlighted column showing one layer attending to all previous layers
+   - Colored cells showing attention weights (darker = higher weight)
+   - Color: shades of green #B8E6B8 to dark green
+   - Label above: "Attention Residuals (AttnRes)"
+   - Label below: "Attends across layer depth (vertical)"
+   - An arrow labeled "Depth/Layers" pointing down along the vertical axis
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The rotation metaphor should be visually clear and striking.
+The two grids should look like the same structure, just rotated.

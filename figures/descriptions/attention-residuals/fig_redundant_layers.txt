@@ -1,0 +1,43 @@
+Layer Redundancy in Deep Transformers
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+Research has shown that many layers in deep LLMs can be removed with minimal performance impact. This diagram illustrates the concept: in a standard 12-layer transformer, removing layers 5-8 causes only a small drop in performance, suggesting those layers contribute very little unique information due to the dilution effect.
+
+== LAYOUT ==
+- Direction: left-to-right comparison
+- Left side: full 12-layer model stack
+- Right side: same model with layers 5-8 grayed out/crossed out
+- Below: performance bar showing minimal difference
+
+== COMPONENTS ==
+1. Full Model (left)
+   - 12 stacked rounded rectangles, numbered 1-12
+   - Color: soft green #B8E6B8
+   - Label at top: "Full Model (12 layers)"
+
+2. Pruned Model (right)
+   - Same 12 rectangles, but layers 5-8 are:
+     - Color: light gray #E0E0E0 with diagonal strikethrough lines
+     - Label: "Removed"
+   - Remaining layers (1-4, 9-12) in soft green
+   - Label at top: "Pruned Model (8 layers)"
+
+3. Performance comparison below
+   - Two horizontal bars side by side
+   - Full model bar: 100% width, soft green, label "100% performance"
+   - Pruned model bar: ~97% width, light blue, label "~97% performance"
+   - Delta annotation: "Only 3% drop!"
+
+4. Insight callout
+   - Text box with light pink #FFB8D4 background
+   - Text: "Uniform residual accumulation makes middle layers nearly redundant"
+
+== CONNECTIONS ==
+- Dashed arrows from full model to pruned model showing the removal
+- Arrow from pruned performance bar to callout
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The visual impact should be: 4 layers removed, almost no performance change.

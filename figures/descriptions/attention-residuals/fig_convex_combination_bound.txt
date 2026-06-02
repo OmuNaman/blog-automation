@@ -1,0 +1,43 @@
+The Convex Combination Bound: Why AttnRes Magnitudes Stay Bounded
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+The key mathematical insight: since softmax weights sum to 1, AttnRes outputs are convex combinations of previous layer outputs. A convex combination's magnitude can never exceed the largest input magnitude. This eliminates the O(L) growth problem.
+
+== LAYOUT ==
+- Two panels: top shows the math, bottom shows the geometric intuition
+- Clean, centered layout
+
+== COMPONENTS ==
+Top Panel - The Math:
+1. Standard residual equation
+   - "Standard: h_L = v_0 + v_1 + v_2 + ... + v_L"
+   - Below: "||h_L|| can grow as O(L)"
+   - Color: light pink #FFB8D4 background box
+   - Red cross or warning symbol
+
+2. AttnRes equation
+   - "AttnRes: h_L = alpha_0*v_0 + alpha_1*v_1 + ... + alpha_L*v_L"
+   - Below: "where alpha_0 + alpha_1 + ... + alpha_L = 1"
+   - Below: "||h_L|| <= max_i ||v_i||"
+   - Color: soft green #B8E6B8 background box
+   - Green checkmark
+
+Bottom Panel - Geometric Intuition:
+3. A 2D visualization
+   - Show 4 point vectors (v_0, v_1, v_2, v_3) as dots in a 2D space
+   - The convex hull drawn as a shaded polygon (light blue #B3D9FF)
+   - A circle centered at origin showing the bound radius = max ||v_i||
+   - The AttnRes output h_L shown as a dot INSIDE the convex hull
+   - A separate point far outside showing where standard residual h_L would be
+   - Label inside hull: "AttnRes output always in here"
+   - Label for outside point: "Standard residual output (unbounded)"
+
+4. Key insight callout
+   - Text: "Softmax weights sum to 1, so the output is a weighted average, never larger than the inputs"
+   - Color: light yellow #FFF3B8 background
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The geometric visualization should make the bound intuitively obvious.

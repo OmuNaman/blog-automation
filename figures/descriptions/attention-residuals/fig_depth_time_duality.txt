@@ -1,0 +1,61 @@
+The Depth-Time Duality: Attention Over Sequence vs Attention Over Depth
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This is the key conceptual diagram showing the parallel between standard self-attention (horizontal, across sequence positions) and Attention Residuals (vertical, across network depth). The mathematical structure is identical, just applied to different dimensions.
+
+== LAYOUT ==
+- Two panels side by side with a large "=" or "same math" annotation between them
+- Left panel: "Attention Over Sequence (Standard)"
+- Right panel: "Attention Over Depth (AttnRes)"
+
+== COMPONENTS ==
+Left Panel - Attention Over Sequence:
+1. A horizontal row of 4 token boxes at the bottom: "The", "cat", "sat", "down"
+   - Shape: small rounded rectangles
+   - Color: light blue #B3D9FF
+   - Label below row: "Sequence Positions"
+
+2. A highlighted token "down" (position 4) at the right
+   - Color: soft green #B8E6B8 (highlighted)
+   - Label: "Current token queries previous tokens"
+
+3. Horizontal arrows from "down" pointing LEFT to each previous token
+   - Arrow thickness varies (showing attention weights)
+   - Labels on arrows: "alpha_1", "alpha_2", "alpha_3"
+   - Annotation: "Softmax attention across time"
+
+4. Output box above
+   - Label: "h = Sum(alpha_i * v_i)"
+   - Color: lavender #D4B8E6
+
+Right Panel - Attention Over Depth:
+5. A vertical stack of 4 layer boxes: "Layer 0 (embed)", "Layer 1", "Layer 2", "Layer 3"
+   - Shape: small rounded rectangles
+   - Color: light blue #B3D9FF
+   - Label beside column: "Network Depth"
+
+6. A highlighted layer "Layer 4" at the top
+   - Color: soft green #B8E6B8 (highlighted)
+   - Label: "Current layer queries previous layers"
+
+7. Vertical arrows from "Layer 4" pointing DOWN to each previous layer
+   - Arrow thickness varies (showing attention weights)
+   - Labels on arrows: "alpha_0", "alpha_1", "alpha_2", "alpha_3"
+   - Annotation: "Softmax attention across depth"
+
+8. Output box to the right
+   - Label: "h = Sum(alpha_i * v_i)"
+   - Color: lavender #D4B8E6
+
+Center Annotation:
+9. Between the two panels, a large equals sign or text
+   - Label: "Same Mathematical Structure"
+   - Color: bold black text
+   - A double-headed arrow or "equivalent" symbol
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The visual parallel between left and right should be immediately obvious.
+Symmetric layout is critical. Both panels should use the same visual language.

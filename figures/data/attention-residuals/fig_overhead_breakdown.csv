@@ -1,0 +1,7 @@
+metric,value,category
+Training Cost Increase,3.8,overhead
+Inference Latency Increase,1.9,overhead
+Compute Advantage (equivalent performance),25.0,gain
+GPQA-Diamond Improvement,7.5,gain
+Math Improvement,3.6,gain
+HumanEval Improvement,3.1,gain

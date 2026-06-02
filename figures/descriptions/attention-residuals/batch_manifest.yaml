@@ -1,0 +1,108 @@
+items:
+  - input: fig_roadmap.txt
+    caption: "Figure 1. Roadmap of this article. We start with the problem of PreNorm dilution, build the depth-time duality intuition, walk through AttnRes step by step, introduce Block AttnRes, formalize the math, and quantify the gains."
+    id: fig_roadmap
+
+  - input: fig_residual_stream_overview.txt
+    caption: "Figure 2. The residual stream in a standard transformer. Each layer adds its output to the running sum with a fixed weight of 1.0, creating a single, ever-growing hidden state."
+    id: fig_residual_stream_overview
+
+  - input: fig_layer_contribution_pie.txt
+    caption: "Figure 3. The contribution of each layer as a fraction of the total hidden state in a 6-layer model. Each layer's output represents only about 14 percent of the final representation."
+    id: fig_layer_contribution_pie
+
+  - input: fig_redundant_layers.txt
+    caption: "Figure 4. The redundancy problem in deep transformers. Removing several middle layers causes only a small drop in performance, suggesting uniform accumulation wastes model capacity."
+    id: fig_redundant_layers
+
+  - input: fig_sequence_attention_analogy.txt
+    caption: "Figure 5. The memory loss problem in sequences. Without attention, early tokens are progressively forgotten. With attention, any position can selectively access any previous position."
+    id: fig_sequence_attention_analogy
+
+  - input: fig_depth_time_duality.txt
+    caption: "Figure 6. The depth-time duality. Standard self-attention operates horizontally across sequence positions. AttnRes operates vertically across network depth. The mathematical structure is identical."
+    id: fig_depth_time_duality
+
+  - input: fig_90_degree_rotation.txt
+    caption: "Figure 7. Rotating attention 90 degrees. Standard attention selectively retrieves information across time. AttnRes selectively retrieves information across depth. Both use softmax-weighted combinations."
+    id: fig_90_degree_rotation
+
+  - input: fig_standard_vs_attnres_side_by_side.txt
+    caption: "Figure 8. Standard residual connections vs Attention Residuals. Left: each layer blindly adds its output with fixed weight 1.0. Right: each layer uses a learned query to selectively weight previous layer outputs via softmax attention."
+    id: fig_standard_vs_attnres_side_by_side
+
+  - input: fig_standard_residual_walkthrough.txt
+    caption: "Figure 9. Standard residual computation for our running example. Four tokens flow through 6 layers with each layer output added with weight 1.0. Hidden state magnitudes grow progressively at each layer."
+    id: fig_standard_residual_walkthrough
+
+  - input: fig_pseudo_query_concept.txt
+    caption: "Figure 10. The pseudo-query vector. Each layer has a learned vector that acts as a question: which previous layers are most relevant? This query attends over all previous layer outputs to produce input-dependent weights."
+    id: fig_pseudo_query_concept
+
+  - input: fig_attnres_single_layer_computation.txt
+    caption: "Figure 11. AttnRes computation at layer 4 in detail. The pseudo-query computes dot products with RMSNorm-normalized keys from layers 0 through 3, producing softmax attention weights. The output is a selective weighted sum."
+    id: fig_attnres_single_layer_computation
+
+  - input: fig_attnres_attention_weights_example.txt
+    caption: "Figure 12. Attention weight computation for layer 4. After the pseudo-query is dotted with normalized keys and passed through softmax, the weights show that layer 4 draws 55 percent from layer 2 output."
+    id: fig_attnres_attention_weights_example
+
+  - input: fig_attnres_full_walkthrough.txt
+    caption: "Figure 13. Full AttnRes forward pass for our running example. The same 4 tokens flow through 6 layers with selective attention weights. Hidden state magnitudes remain bounded, unlike the standard residual version."
+    id: fig_attnres_full_walkthrough
+
+  - input: fig_input_dependent_weights.txt
+    caption: "Figure 14. Input-dependent attention weights. Different tokens produce different weight distributions over previous layers. The same pseudo-query yields different weights because keys depend on the input."
+    id: fig_input_dependent_weights
+
+  - input: fig_block_attnres_overview.txt
+    caption: "Figure 15. Block AttnRes architecture. Layers are partitioned into blocks. Within blocks, standard residuals accumulate. At block boundaries, attention-based aggregation selectively combines block representations plus token embeddings."
+    id: fig_block_attnres_overview
+
+  - input: fig_block_vs_full_memory.txt
+    caption: "Figure 16. Memory comparison. Full AttnRes stores all L layer outputs requiring O(Ld) memory. Block AttnRes stores only N block representations, reducing memory to O(Nd), a 6x reduction for a 48-layer model with 8 blocks."
+    id: fig_block_vs_full_memory
+
+  - input: fig_block_attnres_walkthrough.txt
+    caption: "Figure 17. Block AttnRes step-by-step for our running example with 6 layers and 2 blocks. Block 1 uses standard residuals internally. At the boundary, attention aggregates Block 1 output and embeddings. Block 2 proceeds with the aggregated input."
+    id: fig_block_attnres_walkthrough
+
+  - input: fig_block_boundary_attention.txt
+    caption: "Figure 18. Attention computation at a block boundary. Previous block representations and embeddings are stacked, normalized, scored via learned projection, and aggregated via softmax-weighted sum."
+    id: fig_block_boundary_attention
+
+  - input: fig_pipeline_parallelism.txt
+    caption: "Figure 19. Block AttnRes in pipeline-parallel training. Each GPU stage holds blocks and caches representations. Cross-block attention uses cached representations communicated via point-to-point transfers."
+    id: fig_pipeline_parallelism
+
+  - input: fig_convex_combination_bound.txt
+    caption: "Figure 20. The convex combination bound. Since softmax weights sum to 1, AttnRes outputs are bounded weighted averages. The magnitude can never exceed the largest input, eliminating O(L) growth."
+    id: fig_convex_combination_bound
+
+  - input: fig_gradient_flow_standard.txt
+    caption: "Figure 21. Gradient flow in standard residuals. Gradients flow through a chain of multiplicative terms, concentrating in shallow layers and attenuating in deeper ones."
+    id: fig_gradient_flow_standard
+
+  - input: fig_gradient_flow_attnres.txt
+    caption: "Figure 22. Gradient flow in AttnRes. Each layer receives a direct gradient signal weighted by its attention weight, creating more uniform gradient distribution across all layers."
+    id: fig_gradient_flow_attnres
+
+  - input: fig_linear_attention_equivalence.txt
+    caption: "Figure 23. Standard residuals as low-rank linear attention over depth. Standard residuals use constant weights of 1. AttnRes generalizes to full-rank softmax attention, providing strictly more expressive depth-wise routing."
+    id: fig_linear_attention_equivalence
+
+  - input: fig_evolution_timeline.txt
+    caption: "Figure 24. The evolution of depth-wise aggregation from standard residuals (2016) through DenseNet, DenseFormer, ResFormer, and DeepCrossAttention to Attention Residuals (2026). Each step increases expressiveness."
+    id: fig_evolution_timeline
+
+  - input: fig_method_comparison_table.txt
+    caption: "Figure 25. Comparison of depth-wise aggregation methods. From fixed weights to learned input-dependent softmax attention, each approach trades off expressiveness against computational cost."
+    id: fig_method_comparison_table
+
+  - input: fig_attention_weight_heatmap.txt
+    caption: "Figure 26. Learned depth-wise attention weight heatmap. Early blocks attend to embeddings, middle blocks to nearby predecessors, and deep blocks develop long-range connections to early layers."
+    id: fig_attention_weight_heatmap
+
+  - input: fig_code_pseudocode.txt
+    caption: "Figure 27. Annotated PyTorch pseudocode for Block AttnRes. The implementation stacks sources, normalizes, computes attention logits, applies softmax, and produces weighted aggregation."
+    id: fig_code_pseudocode

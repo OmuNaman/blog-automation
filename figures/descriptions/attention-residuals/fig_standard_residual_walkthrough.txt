@@ -1,0 +1,51 @@
+Standard Residual Computation: Running Example Walkthrough
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram traces 4 tokens through 6 layers of a standard PreNorm transformer with residual connections. At each layer, the layer output is added with weight 1.0 to the running sum. The hidden state vectors grow progressively larger.
+
+== LAYOUT ==
+- Direction: bottom-to-top, 7 rows (embedding + 6 layers)
+- Show one token's path in detail (e.g., "cat")
+- Right side: magnitude bar growing at each layer
+
+== COMPONENTS ==
+1. Embedding row (bottom)
+   - Box: "h_0 = x" with shape label "(4, 8)"
+   - Color: light blue #B3D9FF
+   - Magnitude annotation: "||h_0|| = 1.0"
+
+2. Layer 1
+   - Two boxes side by side: "RMSNorm + f_1" (soft green #B8E6B8) and merge "+"
+   - Arrow from h_0 to f_1, arrow from f_1 to "+"
+   - Arrow from h_0 directly to "+" (skip connection)
+   - Result: "h_1 = h_0 + f_1"
+   - Magnitude: "||h_1|| = 1.4"
+
+3. Layer 2
+   - Same structure: "RMSNorm + f_2" and merge "+"
+   - Result: "h_2 = h_1 + f_2"
+   - Magnitude: "||h_2|| = 1.9"
+
+4. Layer 3
+   - Result: "h_3 = h_2 + f_3"
+   - Magnitude: "||h_3|| = 2.3"
+
+5. Layers 4-5 (abbreviated with "...")
+
+6. Layer 6
+   - Result: "h_6 = h_5 + f_6"
+   - Magnitude: "||h_6|| = 3.2"
+   - Color: light pink #FFB8D4 (warning color)
+
+7. Right side magnitude bars
+   - Vertical bar chart showing ||h_l|| at each layer
+   - Bars get progressively taller
+   - Color gradient from green (small) to pink (large)
+   - Arrow annotation: "Linear growth O(L)"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The growing magnitudes should be the key visual takeaway.
+Show concrete numbers to make the growth tangible.

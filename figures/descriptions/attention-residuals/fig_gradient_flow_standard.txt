@@ -1,0 +1,57 @@
+Gradient Flow in Standard Residual Connections
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+In standard residuals, gradients flow backward through a chain of multiplicative terms. While the identity shortcut helps, gradients can still concentrate in shallow layers and attenuate in deeper ones.
+
+== LAYOUT ==
+- Direction: top-to-bottom (loss at top, early layers at bottom)
+- Show gradient flow through 6 layers
+- Color intensity indicates gradient magnitude (darker = stronger)
+
+== COMPONENTS ==
+1. Loss function (top)
+   - Shape: rounded rectangle
+   - Color: light pink #FFB8D4
+   - Label: "Loss L"
+
+2. Layer 6 (top layer, receives strong gradient)
+   - Color: dark/saturated green
+   - Label: "Layer 6: strong gradient"
+   - Gradient bar: tall
+
+3. Layer 5
+   - Color: medium green
+   - Gradient bar: slightly shorter
+
+4. Layer 4
+   - Color: medium-light green
+   - Gradient bar: shorter
+
+5. Layer 3
+   - Color: light green
+   - Gradient bar: shorter
+
+6. Layer 2
+   - Color: very light green
+   - Gradient bar: short
+
+7. Layer 1 (bottom, weak gradient)
+   - Color: very faded green, almost white
+   - Label: "Layer 1: weak gradient"
+   - Gradient bar: very short
+
+8. Gradient pathway
+   - Show the chain: gradient flows through product of (I + df_k/dh) terms
+   - Formula: "dL/dh_l = dL/dh_L * Product(I + df_k/dh)"
+   - Arrow showing the chain multiplication
+
+9. Right side: gradient magnitude bars
+   - Vertical bar chart showing gradient norm at each layer
+   - Bars get shorter from top to bottom
+   - Label: "Gradient norms concentrate in shallow (recent) layers"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The gradient attenuation from top to bottom should be visually clear.

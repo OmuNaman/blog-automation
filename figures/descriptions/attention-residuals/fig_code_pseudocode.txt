@@ -1,0 +1,69 @@
+Annotated PyTorch Pseudocode for Block AttnRes
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This figure shows the official PyTorch pseudocode for Block AttnRes with visual annotations explaining each step. The code stacks previous block representations, normalizes with RMSNorm, computes attention logits via einsum, applies softmax, and produces the weighted aggregation.
+
+== LAYOUT ==
+- Code block on the left (dark background for code)
+- Annotations/arrows on the right pointing to each code section
+- Step numbers for each phase
+
+== COMPONENTS ==
+1. Code block (left, ~60% width)
+   - Dark background #2D2D2D or #1E1E1E (code editor style)
+   - White/colored text for syntax highlighting
+   - Python code:
+     ```
+     def block_attn_res(block_reprs, partial_sum, proj):
+         # Step 1: Stack all sources
+         V = stack(block_reprs + [partial_sum])
+
+         # Step 2: Normalize
+         V = RMSNorm(V)
+
+         # Step 3: Compute attention logits
+         logits = einsum('d, n b t d -> n b t',
+                         proj.weight.squeeze(), V)
+
+         # Step 4: Softmax over block dimension
+         weights = logits.softmax(dim=0)
+
+         # Step 5: Weighted aggregation
+         output = einsum('n b t, n b t d -> b t d',
+                         weights, V)
+         return output
+     ```
+
+2. Step 1 annotation (right)
+   - Arrow pointing to stack line
+   - Box: "Gather all previous block outputs + current partial sum"
+   - Shape info: "(N+1, batch, seq, d)"
+   - Color: light blue #B3D9FF
+
+3. Step 2 annotation
+   - Arrow to RMSNorm line
+   - Box: "Normalize to stabilize attention computation"
+   - Color: light gray #E0E0E0
+
+4. Step 3 annotation
+   - Arrow to einsum logits line
+   - Box: "Learned projection scores each source"
+   - "proj.weight shape: (d,)"
+   - Color: peach #FFD4B8
+
+5. Step 4 annotation
+   - Arrow to softmax line
+   - Box: "Softmax ensures weights sum to 1 (convex combination!)"
+   - Color: lavender #D4B8E6
+
+6. Step 5 annotation
+   - Arrow to output einsum line
+   - Box: "Weighted sum produces bounded output"
+   - Color: soft green #B8E6B8
+
+== STYLE ==
+Clean academic illustration with code. Code uses monospace font with syntax highlighting.
+Annotations use sans-serif font with pastel colored boxes.
+White background (#FFFFFF) for the overall figure, dark background for the code block.

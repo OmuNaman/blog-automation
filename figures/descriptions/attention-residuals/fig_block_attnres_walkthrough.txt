@@ -1,0 +1,53 @@
+Block AttnRes Step-by-Step: Running Example (L=6, N=2 Blocks)
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This walks through our running example with Block AttnRes. 6 layers are partitioned into 2 blocks of 3 layers each. Block 1 uses standard residuals internally. At the block boundary, attention aggregates Block 1's output and the token embedding. Block 2 proceeds with the aggregated input.
+
+== LAYOUT ==
+- Direction: bottom-to-top
+- Two large block regions, clearly separated
+- Block boundary highlighted between them
+
+== COMPONENTS ==
+1. Token Embeddings (bottom)
+   - Shape: rounded rectangle
+   - Color: light blue #B3D9FF
+   - Label: "x (embeddings), shape (4, 8)"
+
+2. Block 1 region (layers 1-3)
+   - Large bordered region, color: soft green #B8E6B8 border
+   - Label: "Block 1 (Layers 1-3): Standard Residuals"
+   - Three internal layer boxes: "Layer 1", "Layer 2", "Layer 3"
+   - Standard residual arrows: h_1 = h_0 + f_1, h_2 = h_1 + f_2, h_3 = h_2 + f_3
+   - "+" symbols at each merge
+   - Label: "weight = 1.0 (standard addition)"
+   - Output: "B_1 = h_3 (block 1 output)"
+
+3. Block Boundary (between blocks)
+   - Highlighted region with special styling
+   - Color: peach #FFD4B8 background
+   - Label: "Block Boundary: Depth Attention"
+   - Shows:
+     - Input sources: "x (embeddings)" and "B_1 (block 1 output)"
+     - RMSNorm applied to both
+     - Pseudo-query w_boundary dotted with both
+     - Softmax: "alpha_x = 0.35, alpha_B1 = 0.65"
+     - Weighted sum: "h_boundary = 0.35*x + 0.65*B_1"
+   - Output arrow going up to Block 2
+
+4. Block 2 region (layers 4-6)
+   - Large bordered region, color: lavender #D4B8E6 border
+   - Label: "Block 2 (Layers 4-6): Standard Residuals"
+   - Three internal layers using h_boundary as input
+   - Standard residual arrows within
+   - Output: "h_6 (final output)"
+
+5. Annotations
+   - Arrow from embeddings with dashed line going up to the boundary: "Embeddings always available"
+   - Side note: "Within blocks: O(L) growth. At boundaries: reset via attention."
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The block boundary should be the visual focal point.

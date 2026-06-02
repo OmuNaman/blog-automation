@@ -1,0 +1,55 @@
+Block AttnRes in Pipeline-Parallel Training
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+In pipeline-parallel training, different GPU stages hold different blocks. Cross-block attention requires representations from blocks on other GPUs. The solution uses cache-based point-to-point communication and a two-phase computation strategy.
+
+== LAYOUT ==
+- Direction: left-to-right showing 4 GPU stages
+- Each GPU holds 2 blocks (for an 8-block model)
+- Communication arrows between GPUs for cached block representations
+
+== COMPONENTS ==
+1. GPU 0 (leftmost)
+   - Shape: large rounded rectangle
+   - Color: light blue #B3D9FF border
+   - Label: "GPU 0"
+   - Contains: "Block 1" and "Block 2" boxes (soft green)
+   - Cache box: "Cache: [x, B_1, B_2]"
+   - Label: "Phase 1: Compute layers, Phase 2: Block attention"
+
+2. GPU 1
+   - Color: soft green #B8E6B8 border
+   - Label: "GPU 1"
+   - Contains: "Block 3" and "Block 4"
+   - Cache box: "Cache: [x, B_1, B_2, B_3, B_4]"
+   - Receives cached representations from GPU 0
+
+3. GPU 2
+   - Color: lavender #D4B8E6 border
+   - Label: "GPU 2"
+   - Contains: "Block 5" and "Block 6"
+   - Cache: "[x, B_1..B_6]"
+
+4. GPU 3 (rightmost)
+   - Color: peach #FFD4B8 border
+   - Label: "GPU 3"
+   - Contains: "Block 7" and "Block 8"
+   - Cache: "[x, B_1..B_8]"
+
+5. Communication arrows
+   - Solid arrows from GPU 0 to GPU 1: "Send cached [B_1, B_2]"
+   - Solid arrows from GPU 1 to GPU 2: "Send cached [B_1..B_4]"
+   - Solid arrows from GPU 2 to GPU 3: "Send cached [B_1..B_6]"
+   - Label: "Point-to-point communication"
+
+6. Two-phase annotation
+   - Box at bottom explaining:
+   - "Phase 1: Standard attention within current block"
+   - "Phase 2: Cross-block attention using cached representations"
+   - Color: light yellow #FFF3B8
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The communication pattern between GPUs should be clear.

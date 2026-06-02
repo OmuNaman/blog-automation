@@ -1,0 +1,57 @@
+Article Roadmap: Attention Residuals
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This is the opening roadmap figure for an article about Attention Residuals (AttnRes), a technique that replaces fixed residual connections in transformers with learned depth-wise attention. The roadmap shows the reader's journey through the article sections.
+
+== LAYOUT ==
+- Direction: left-to-right, single horizontal flow with 6 stops
+- Each stop is a rounded rectangle with a title and subtitle
+- Connected by curved arrows forming a path/journey
+
+== COMPONENTS ==
+1. "The Problem"
+   - Shape: rounded rectangle
+   - Color: light pink #FFB8D4
+   - Label: "The Problem" (bold), subtitle "PreNorm Dilution"
+   - Position: far left
+
+2. "The Insight"
+   - Shape: rounded rectangle
+   - Color: peach #FFD4B8
+   - Label: "The Insight" (bold), subtitle "Depth-Time Duality"
+   - Position: second from left
+
+3. "The Mechanism"
+   - Shape: rounded rectangle
+   - Color: light blue #B3D9FF
+   - Label: "The Mechanism" (bold), subtitle "AttnRes Step by Step"
+   - Position: center-left
+
+4. "Scaling Up"
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "Scaling Up" (bold), subtitle "Block AttnRes"
+   - Position: center-right
+
+5. "The Math"
+   - Shape: rounded rectangle
+   - Color: lavender #D4B8E6
+   - Label: "The Math" (bold), subtitle "Proofs and Bounds"
+   - Position: second from right
+
+6. "The Results"
+   - Shape: rounded rectangle
+   - Color: light yellow #FFF3B8
+   - Label: "The Results" (bold), subtitle "Benchmarks and Scaling"
+   - Position: far right
+
+== CONNECTIONS ==
+- Solid black arrows connecting each box to the next in sequence
+- Arrows should have a slight curve to follow a path aesthetic
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). Each box should be roughly the same size.
+Minimal, elegant, no clutter. The feel is a journey guiding the reader.

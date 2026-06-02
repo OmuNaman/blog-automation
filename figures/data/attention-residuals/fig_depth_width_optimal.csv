@@ -1,0 +1,7 @@
+depth_layers,standard_optimal_width,attnres_optimal_width,standard_loss,attnres_loss
+12,8192,6144,2.85,2.78
+24,6144,4096,2.72,2.60
+36,5120,3584,2.68,2.52
+48,4096,3072,2.70,2.48
+64,3584,2560,2.75,2.47
+80,3072,2048,2.82,2.50

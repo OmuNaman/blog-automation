@@ -1,0 +1,54 @@
+Attention at a Block Boundary: Detailed Computation
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This shows the detailed computation that happens at each block boundary in Block AttnRes. Previous block representations and token embeddings are stacked, normalized with RMSNorm, scored using a learned projection, and aggregated via softmax-weighted sum.
+
+== LAYOUT ==
+- Direction: left-to-right flow diagram
+- Four stages: Stack, Normalize, Score, Aggregate
+
+== COMPONENTS ==
+Stage 1 - Stack:
+1. Input sources stacked vertically
+   - "x (embeddings)": light blue #B3D9FF, shape "(batch, seq, d)"
+   - "B_1 output": soft green #B8E6B8, shape "(batch, seq, d)"
+   - "B_2 output": lavender #D4B8E6, shape "(batch, seq, d)"
+   - "Current partial sum": peach #FFD4B8, shape "(batch, seq, d)"
+   - Stacked into: "V", shape "(4, batch, seq, d)" or "(N_prev+1, batch, seq, d)"
+   - Label: "Stack sources"
+
+Stage 2 - Normalize:
+2. RMSNorm box
+   - Color: light gray #E0E0E0
+   - Label: "RMSNorm(V)"
+   - Output: normalized V with same shape
+   - Arrow from Stage 1
+
+Stage 3 - Score:
+3. Learned projection
+   - Small vector box: "proj.weight" shape "(d,)"
+   - Color: peach #FFD4B8
+   - Operation: "einsum('d, n b t d -> n b t', proj, V_norm)"
+   - Result: "logits" shape "(N_prev+1, batch, seq)"
+   - Then: "softmax(logits, dim=0)"
+   - Result: "weights" shape "(N_prev+1, batch, seq)"
+   - Show example weights: [0.15, 0.25, 0.35, 0.25]
+
+Stage 4 - Aggregate:
+4. Weighted sum
+   - Operation: "einsum('n b t, n b t d -> b t d', weights, V_norm)"
+   - Result: "output" shape "(batch, seq, d)"
+   - Color: soft green #B8E6B8
+   - Label: "Aggregated block input"
+   - Arrow going right to "Next Block"
+
+== CONNECTIONS ==
+- Solid black arrows flowing left to right through all stages
+- Each stage clearly boxed and labeled
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). Shape annotations at every step are critical.
+This is essentially the PyTorch pseudocode visualized as a flow diagram.

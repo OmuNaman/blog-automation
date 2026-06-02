@@ -1,0 +1,60 @@
+Full AttnRes Forward Pass: Running Example with 6 Layers
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram shows the complete AttnRes forward pass for our running example: 4 tokens through 6 layers. Unlike the standard residual version where magnitudes grow linearly, here each layer selectively weights its inputs and magnitudes remain bounded.
+
+== LAYOUT ==
+- Direction: bottom-to-top, 7 rows (embedding + 6 layers)
+- Each layer shows attention arrows going down to previous layers
+- Right side: magnitude bars (bounded, not growing)
+
+== COMPONENTS ==
+1. Embedding row (bottom)
+   - Box: "v_0 = x (embeddings)"
+   - Color: light blue #B3D9FF
+   - Magnitude: "||h_0|| = 1.0"
+
+2. Layer 1
+   - Box: "Layer 1" (soft green #B8E6B8)
+   - Produces v_1
+   - Attention: only attends to v_0 (alpha_0 = 1.0, trivially)
+   - Result: "h_1" with magnitude "||h_1|| = 1.0"
+
+3. Layer 2
+   - Box: "Layer 2" (soft green)
+   - Attention arrows down to v_0 and v_1
+   - Weights shown: "alpha_0=0.3, alpha_1=0.7"
+   - Result: "h_2 = 0.3*v_0 + 0.7*v_1"
+   - Magnitude: "||h_2|| = 0.95"
+
+4. Layer 3
+   - Attention arrows to v_0, v_1, v_2
+   - Weights: "alpha_0=0.1, alpha_1=0.2, alpha_2=0.7"
+   - Magnitude: "||h_3|| = 1.05"
+
+5. Layers 4-5 (abbreviated)
+   - Show attention fan-out arrows getting wider
+
+6. Layer 6
+   - Attention arrows to all previous layers v_0 through v_5
+   - Weights shown (example): various alphas
+   - Magnitude: "||h_6|| = 1.1"
+   - Color: soft green (not pink like standard, because bounded!)
+
+7. Right side magnitude bars
+   - Bars all roughly the same height (bounded)
+   - Color: soft green #B8E6B8
+   - Annotation: "Bounded! No O(L) growth"
+   - Compare with dashed outline showing where standard residual bars would be
+
+== CONNECTIONS ==
+- Attention arrows from each layer going down to all previous layers
+- Arrow thickness proportional to attention weight
+- Thicker arrows = higher weight
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The bounded magnitudes are the key visual message.
+Contrast with the standard residual version should be obvious.

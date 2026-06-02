@@ -1,5 +1,15 @@
 .env
 __pycache__/
 *.pyc
-.claude/projects/
+
+# Claude Code local/session data (skills stay tracked)
+.claude/*
+!.claude/skills/
+
+# PaperBanana run artifacts (intermediate generation runs)
+outputs/
 figures/output/run_*/
+figures/output/**/run_*/
+
+# Regenerable distribution bundle (also packs local settings)
+blog-automation-skills.zip

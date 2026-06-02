@@ -1,0 +1,76 @@
+The Residual Stream in a Standard Transformer
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram shows how residual connections work in a standard PreNorm transformer. A vertical "residual stream" runs from bottom to top, and each layer adds its output to this stream with a fixed weight of 1.0. The stream grows larger at each layer.
+
+== LAYOUT ==
+- Direction: bottom-to-top (input at bottom, output at top)
+- Central vertical thick line representing the "residual stream"
+- 6 layers branching off to the right, each feeding back into the stream
+- The residual stream line should get progressively thicker/bolder going up to visually represent magnitude growth
+
+== COMPONENTS ==
+1. Input Embeddings (x)
+   - Shape: rounded rectangle
+   - Color: light blue #B3D9FF
+   - Label: "Token Embeddings x"
+   - Size: medium
+   - Position: bottom center
+
+2. Layer 1 Block
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "Layer 1: RMSNorm + Attention + FFN"
+   - Size: medium
+   - Position: right side, row 1
+
+3. Layer 2 Block
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "Layer 2: RMSNorm + Attention + FFN"
+   - Position: right side, row 2
+
+4. Layer 3 Block
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "Layer 3: RMSNorm + Attention + FFN"
+   - Position: right side, row 3
+
+5. "..." indicator for layers 4-5
+   - Label: "..."
+   - Position: right side, row 4
+
+6. Layer 6 Block
+   - Shape: rounded rectangle
+   - Color: soft green #B8E6B8
+   - Label: "Layer 6: RMSNorm + Attention + FFN"
+   - Position: right side, row 5
+
+7. Output
+   - Shape: rounded rectangle
+   - Color: lavender #D4B8E6
+   - Label: "Output h_6"
+   - Position: top center
+
+8. Plus symbols (+) at each merge point
+   - Shape: circle with "+"
+   - Color: light gray #E0E0E0
+   - Position: on the residual stream at each layer merge
+
+== CONNECTIONS ==
+- Thick vertical line (residual stream) from input to output, getting progressively thicker
+- Each layer block has an arrow going right from the stream (taking input) and an arrow returning left to the "+" merge point
+- Labels on each merge: "+1.0" to emphasize fixed unit weight
+- The stream after each merge should be visually thicker than before
+
+== ANNOTATIONS ==
+- Label the vertical line "Residual Stream"
+- At each "+" merge point, annotate "weight = 1.0"
+- Arrow from stream to layer labeled "RMSNorm(h)"
+- Arrow from layer back labeled "f_l(h)"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The growing thickness of the residual stream is the key visual message.

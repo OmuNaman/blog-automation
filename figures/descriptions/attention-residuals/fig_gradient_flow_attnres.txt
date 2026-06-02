@@ -1,0 +1,47 @@
+Gradient Flow in Attention Residuals
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+In AttnRes, each layer receives a direct gradient signal weighted by its attention weight alpha. Layers that contribute more get proportionally stronger gradients. This creates more uniform gradient distribution across depth.
+
+== LAYOUT ==
+- Direction: top-to-bottom (loss at top, early layers at bottom)
+- Show gradient flow through 6 layers
+- Color intensity roughly uniform (all layers get gradient)
+
+== COMPONENTS ==
+1. Loss function (top)
+   - Shape: rounded rectangle
+   - Color: light pink #FFB8D4
+   - Label: "Loss L"
+
+2. Layers 1-6, all with roughly similar color intensity
+   - Color: all medium soft green #B8E6B8 (roughly uniform)
+   - Each labeled "Layer N"
+   - Each has a gradient bar of similar height
+
+3. Direct gradient arrows
+   - From loss, show arrows going directly to EACH layer
+   - Not just sequential, but direct connections
+   - Each arrow labeled "alpha_l * dL/dh"
+   - Arrows of similar thickness (uniform gradient)
+   - Color: black arrows
+
+4. Annotation
+   - "Each layer receives direct gradient weighted by alpha"
+   - "Layers that contribute more (higher alpha) get stronger gradients"
+   - "Self-reinforcing: useful layers train faster"
+
+5. Right side: gradient magnitude bars
+   - All bars roughly the same height (uniform distribution)
+   - Color: soft green
+   - Label: "Gradient norms distributed uniformly across depth"
+
+6. Comparison note at bottom
+   - Text: "vs standard residuals where gradients concentrate in shallow layers"
+   - Color: light yellow background
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The uniform gradient distribution should contrast clearly with the standard version.

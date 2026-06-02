@@ -1,0 +1,38 @@
+Layer Contribution Fractions in a 6-Layer Standard Transformer
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This diagram shows how each layer's contribution becomes a progressively smaller fraction of the total hidden state in a standard residual transformer. With 6 layers plus the embedding, each contributes roughly 1/7 of the final hidden state, meaning important early-layer features are "drowned out."
+
+== LAYOUT ==
+- Two parts side by side
+- Left: A stacked bar showing the hidden state composition at layer 6
+- Right: A visual showing the "drowning" effect with annotations
+
+== COMPONENTS ==
+1. Stacked Bar (left side)
+   - 7 horizontal segments stacked vertically, each roughly equal width
+   - Bottom segment: light blue #B3D9FF, label "x (embeddings)"
+   - Segment 2: soft green #B8E6B8, label "f_1 output"
+   - Segment 3: lavender #D4B8E6, label "f_2 output"
+   - Segment 4: light pink #FFB8D4, label "f_3 output"
+   - Segment 5: peach #FFD4B8, label "f_4 output"
+   - Segment 6: light yellow #FFF3B8, label "f_5 output"
+   - Segment 7: light gray #E0E0E0, label "f_6 output"
+   - Each segment should show "~14%" or "1/7"
+   - Title above: "h_6 = x + f_1 + f_2 + f_3 + f_4 + f_5 + f_6"
+
+2. Right side annotation
+   - Show that embedding x, which contains fundamental token identity, is only 14% of the signal
+   - Arrow pointing to the embedding segment with label: "Token identity: only 14% of signal"
+   - Arrow pointing to f_6 segment: "Latest layer: also only 14%"
+   - Text: "Every layer's contribution = 1/L"
+
+3. Comparison callout
+   - Small text box: "In a 50-layer model, each layer is only 2% of the total"
+   - Color: light pink background
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The key message is that each layer is a tiny fraction of the total.

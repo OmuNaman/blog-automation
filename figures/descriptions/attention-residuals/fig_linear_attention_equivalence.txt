@@ -1,0 +1,53 @@
+Standard Residuals as Low-Rank Linear Attention Over Depth
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+The paper establishes that standard residual connections are equivalent to linear attention with constant weights over depth (all weights = 1). AttnRes generalizes this to full-rank softmax attention. This framing reveals that residual connections have always been doing depth-wise "attention," just a very limited form.
+
+== LAYOUT ==
+- Three columns showing a spectrum from simple to expressive
+- Left: Standard Residuals
+- Center: Linear Attention (equivalent to standard)
+- Right: AttnRes (full softmax)
+
+== COMPONENTS ==
+1. Left column - Standard Residuals
+   - Title: "Standard Residuals"
+   - Formula: "h_L = Sum(1 * v_i)"
+   - Weight visualization: all weights shown as equal bars of height 1.0
+   - 6 bars, all same height, all same color (light gray #E0E0E0)
+   - Label: "Fixed weight = 1.0 for all layers"
+   - Annotation: "No selectivity"
+
+2. Center column - Linear Attention
+   - Title: "= Linear Attention (constant)"
+   - Formula: "h_L = Sum(w_i * v_i), w_i = 1"
+   - Same equal bars
+   - A large "=" sign connecting to left column
+   - Label: "Equivalent! Standard residuals ARE constant linear attention over depth"
+   - Color: light blue #B3D9FF
+
+3. Right column - AttnRes
+   - Title: "AttnRes (full softmax)"
+   - Formula: "h_L = Sum(alpha_i * v_i), alpha = softmax(w_l^T * k_i)"
+   - Weight visualization: bars of varying heights
+   - 6 bars with different heights, different colors showing variation
+   - Some tall (0.4), some short (0.05)
+   - Color: soft green #B8E6B8
+   - Label: "Input-dependent, learned weights"
+   - Annotation: "Full selectivity"
+
+4. Spectrum arrow at bottom
+   - Arrow from left to right
+   - Label: "Increasing expressiveness"
+   - Left end: "Fixed, uniform"
+   - Right end: "Learned, selective"
+
+5. Insight callout
+   - Text: "The residual stream has always been doing a form of attention over depth, just a very limited one. AttnRes simply upgrades it."
+   - Color: light yellow #FFF3B8
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The progression from fixed to learned weights should be the key visual.

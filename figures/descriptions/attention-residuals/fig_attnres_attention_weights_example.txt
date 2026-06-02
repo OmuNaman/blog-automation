@@ -1,0 +1,55 @@
+Attention Weight Computation Example for Layer 4
+
+IMPORTANT: Pure white background (#FFFFFF). No gray tint, no gradient.
+
+== CONTEXT ==
+This shows the concrete matrix-level computation of attention weights at layer 4. The pseudo-query w_4 is dotted with RMSNorm-normalized keys from layers 0-3. After softmax, the weights show that layer 4 draws 55% from layer 2's output. Uses specific numerical values.
+
+== LAYOUT ==
+- Direction: left-to-right computation flow
+- Three stages: inputs, computation, result
+- Matrix/vector shapes clearly labeled
+
+== COMPONENTS ==
+1. Pseudo-query vector (left)
+   - Shape: column vector visualization, 8 rows
+   - Color: peach #FFD4B8
+   - Label: "w_4"
+   - Shape annotation: "(8,)"
+
+2. Key matrix (center-left)
+   - Shape: matrix visualization, 4 rows x 8 columns
+   - Each row is one key: k_0, k_1, k_2, k_3
+   - Color: soft green #B8E6B8
+   - Label: "Keys (RMSNorm-ed)"
+   - Shape annotation: "(4, 8)"
+   - Row labels: "k_0 (embed)", "k_1", "k_2", "k_3"
+
+3. Dot product operation (center)
+   - A multiplication symbol between w_4 and K^T
+   - Label: "w_4^T * K"
+   - Result: a row vector [0.2, 0.8, 1.5, 0.6]
+   - Shape: "(4,)"
+   - Color: light gray #E0E0E0
+
+4. Softmax arrow (center-right)
+   - Arrow labeled "softmax"
+   - Input: [0.2, 0.8, 1.5, 0.6]
+   - Output: [0.08, 0.15, 0.55, 0.22]
+
+5. Result attention weights (right)
+   - Four colored bars showing the weights visually
+   - Bar 0: very short bar, label "alpha_0 = 0.08 (embeddings)"
+   - Bar 1: short bar, label "alpha_1 = 0.15"
+   - Bar 2: long bar (highlighted), label "alpha_2 = 0.55" with annotation "Dominant source!"
+   - Bar 3: medium bar, label "alpha_3 = 0.22"
+   - Colors: bars in blue gradient, bar 2 highlighted in bright green
+
+6. Annotation box
+   - Text: "Layer 4 selectively draws 55% from Layer 2"
+   - Color: light yellow #FFF3B8 background
+   - Text: "Weights sum to 1.0 (convex combination)"
+
+== STYLE ==
+Clean academic illustration. Sans-serif font. Pastel palette.
+White background (#FFFFFF). The bar chart of weights should make the selective nature immediately visible.
